@@ -5,7 +5,7 @@
 -   [Overview](#overview)
 -   [External dependencies](#external-dependencies)
 -   [Project structure](#project-structure)
--   [Endpoints](#endpoints)
+-   [REST API Endpoints](#rest-api-endpoints)
 -   [Build](#build)
 -   [Features](#features)
 -   [Screenshots](#screenshots)
@@ -33,7 +33,13 @@ It represents the REST API acces points who are given in the .openapi files in t
 -   dvd-rental-store
 -   dvd-rental-ui
 
-## Endpoints
+## REST API Endpoints
+
+| Name     | Endpoint                                            |
+| -------- | --------------------------------------------------- |
+| Customer | http://localhost:8080/dvd-rental-customer/resources |
+| Film     | http://localhost:8080/dvd-rental-film/resources     |
+| Store    | http://localhost:8080/dvd-rental-store/resources    |
 
 ## Build
 
