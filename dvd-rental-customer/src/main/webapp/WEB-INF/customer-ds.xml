@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_1.xsd">
+
+    <datasource jndi-name="java:jboss/datasources/customer"
+                pool-name="customer" enabled="true" use-java-context="true">
+        <connection-url>jdbc:postgresql://localhost:5432/dvdrentalcustomer</connection-url>
+        <!--<connection-url>jdbc:postgresql://customer-db:54323/dvdrentalcustomer</connection-url>-->
+        <driver>postgresql-42.6.0.jar</driver>
+        <security>
+            <user-name>postgres</user-name>
+            <password>postgres</password>
+        </security>
+    </datasource>
+</datasources>
+

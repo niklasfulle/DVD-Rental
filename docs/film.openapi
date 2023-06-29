@@ -1,0 +1,398 @@
+---
+openapi: 3.0.3
+info:
+  title: DVD Rental Film API
+  contact:
+    name: Bernd Müller
+  version: "1.0"
+servers:
+- url: /dvd-rental-film
+paths:
+  /resources:
+    get:
+      summary: Root of DVD Rental Film
+      description: Returns array of primary resources
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /resources/actors:
+    get:
+      summary: List of actors
+      description: Returns list of actors (max 100)
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Actor'
+    post:
+      summary: Create new actor
+      requestBody:
+        description: Actor data.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Actor'
+      responses:
+        "200":
+          description: OK
+  /resources/actors/count:
+    get:
+      summary: Number of actors
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+  /resources/actors/{id}:
+    get:
+      summary: Actor with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          description: The actor with Id id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Actor'
+        "404":
+          description: Actor not found
+    put:
+      summary: Update Actor
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Actor'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Delete actor with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          description: Actor deleted.
+        "404":
+          description: Actor not found.
+  /resources/actors/{id}/films:
+    get:
+      summary: Films of actor with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          description: "Films of actor with Id {id}"
+        "404":
+          description: Actor not found
+  /resources/categories:
+    get:
+      summary: List of categories
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /resources/films:
+    get:
+      summary: List of films
+      description: Returns list of films (max 100)
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          format: int32
+          default: 100
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          format: int32
+          default: 0
+          type: integer
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'
+    post:
+      summary: Create a new film
+      description: "Create a new film. Use /films/{id}/actor/{actorId} to add an actor."
+      requestBody:
+        description: The film data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+        required: true
+      responses:
+        "201":
+          description: Film was created.
+          headers:
+            Location:
+              description: Location of created film
+              style: simple
+  /resources/films/count:
+    get:
+      summary: Number of films
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+  /resources/films/{id}:
+    get:
+      summary: Get film with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          description: "The film with Id {id}."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'
+        "404":
+          description: Film not found.
+    delete:
+      summary: Delete a film
+      description: Caution must be taken to not delete a film used in a current or
+        past rental.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "204":
+          description: Film was deleted.
+        "404":
+          description: Film not found.
+    patch:
+      summary: Update a film
+      description: "Only 'title', 'description', 'rentalRate' and 'replacementCost'\
+        \ can be updated. Other attributes are ignored."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+      responses:
+        "204":
+          description: Film was updated.
+        "404":
+          description: Film not found.
+  /resources/films/{id}/actors:
+    get:
+      summary: Actors of film with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          description: Actors of film with Id
+        "404":
+          description: Film not found
+  /resources/films/{id}/actors/{actorId}:
+    put:
+      summary: Add actor to film.
+      parameters:
+      - name: actorId
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "201":
+          description: Actor added to film.
+          headers:
+            Location:
+              description: Location of all actors
+              style: simple
+        "404":
+          description: Film or actor not found.
+  /resources/films/{id}/categories:
+    get:
+      summary: Categories of film with Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          description: Categories of film with Id
+        "404":
+          description: Film not found
+  /resources/films/{id}/categories/{category}:
+    put:
+      summary: Add category to film.
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "201":
+          description: Category added to film.
+          headers:
+            Location:
+              description: Location of all categories
+              style: simple
+        "404":
+          description: Film or category not found.
+  /resources/languages:
+    get:
+      summary: List of languages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+components:
+  schemas:
+    Actor:
+      description: POJO that represents an actor.
+      required:
+      - firstName
+      - lastName
+      type: object
+      properties:
+        films:
+          $ref: '#/components/schemas/FilmsHref'
+        firstName:
+          type: string
+          nullable: false
+        id:
+          format: int32
+          type: integer
+        lastName:
+          type: string
+          nullable: false
+    ActorsHref:
+      type: object
+      properties:
+        href:
+          type: string
+    Film:
+      description: POJO that represents a film.
+      required:
+      - rentalDuration
+      - rentalRate
+      - replacementCost
+      - title
+      type: object
+      properties:
+        actors:
+          $ref: '#/components/schemas/ActorsHref'
+        categories:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        id:
+          format: int32
+          type: integer
+        language:
+          type: string
+        length:
+          type: integer
+        rating:
+          type: string
+        releaseYear:
+          type: integer
+        rentalDuration:
+          type: integer
+          nullable: false
+        rentalRate:
+          type: number
+          nullable: false
+        replacementCost:
+          type: number
+          nullable: false
+        title:
+          type: string
+          nullable: false
+    FilmsHref:
+      type: object
+      properties:
+        href:
+          type: string

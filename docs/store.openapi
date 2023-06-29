@@ -1,0 +1,243 @@
+---
+openapi: 3.0.3
+info:
+  title: DVD Rental Film API
+  contact:
+    name: Bernd Müller
+  version: "1.0"
+servers:
+- url: /dvd-rental-store
+paths:
+  /resources:
+    get:
+      summary: Root of DVD Rental Store
+      description: Returns array of primary resources
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /resources/inventories/film/{filmId}:
+    get:
+      summary: List of inventories
+      description: Returns list of inventories
+      parameters:
+      - name: filmId
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+  /resources/inventories/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+  /resources/rentals:
+    post:
+      summary: Create rental
+      requestBody:
+        description: "Rental data (example: {\"inventory\":234,\"customer\":217,\"\
+          staff\":1,\"date\":\"2020-04-06 15:09\"})"
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "201":
+          description: Rental created
+        "400":
+          description: "only allowed: customer (int), inventory (int), staff (int),\
+            \ date (yyyy-MM-dd HH:mm)"
+  /resources/rentals/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          description: "The rental with Id {id}."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rental'
+        "404":
+          description: Rental not found.
+  /resources/rentals/{id}/returned:
+    put:
+      summary: rental terminated
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          description: Rental is terminated.
+        "404":
+          description: Rental not found.
+        "422":
+          description: Rental already terminated.
+  /resources/staff/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+  /resources/stores/count:
+    get:
+      summary: Number of stores
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+  /resources/stores/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+components:
+  schemas:
+    CustomerHref:
+      type: object
+      properties:
+        href:
+          type: string
+    FilmHref:
+      type: object
+      properties:
+        href:
+          type: string
+    FilmHref1:
+      type: object
+      properties:
+        href:
+          type: string
+    Inventory:
+      description: POJO that represents an inventory.
+      type: object
+      properties:
+        film:
+          $ref: '#/components/schemas/FilmHref1'
+        id:
+          format: int32
+          type: integer
+        store:
+          $ref: '#/components/schemas/StoreHref1'
+    Rental:
+      description: POJO that represents a rental.
+      required:
+      - rentalDate
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/CustomerHref'
+        film:
+          $ref: '#/components/schemas/FilmHref'
+        rentalDate:
+          format: date-time
+          type: string
+          nullable: false
+        rentalId:
+          format: int32
+          type: integer
+        returnDate:
+          format: date-time
+          type: string
+        store:
+          $ref: '#/components/schemas/StoreHref'
+    Staff:
+      description: POJO that represents a staff.
+      required:
+      - firstName
+      - lastName
+      - password
+      - username
+      type: object
+      properties:
+        active:
+          type: boolean
+        email:
+          type: string
+        firstName:
+          type: string
+          nullable: false
+        id:
+          format: int32
+          type: integer
+        lastName:
+          type: string
+          nullable: false
+        password:
+          type: string
+          nullable: false
+        picture:
+          type: string
+        username:
+          type: string
+          nullable: false
+    Store:
+      description: POJO that represents a store.
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+    StoreHref:
+      type: object
+      properties:
+        href:
+          type: string
+    StoreHref1:
+      type: object
+      properties:
+        href:
+          type: string
