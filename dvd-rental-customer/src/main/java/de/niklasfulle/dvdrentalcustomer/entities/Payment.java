@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalcustomer.entity;
+package de.niklasfulle.dvdrentalcustomer.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,7 +44,13 @@ public class Payment implements Serializable {
   @JoinColumn(name = "customer_id")
   private Customer customer;
 
-  public Payment() {
+  public Payment(BigDecimal amount, Timestamp paymentDate, Integer rentalId, Integer staffId,
+      Customer customer) {
+    this.amount = amount;
+    this.paymentDate = paymentDate;
+    this.rentalId = rentalId;
+    this.staffId = staffId;
+    this.customer = customer;
   }
 
   // Getter and Setter

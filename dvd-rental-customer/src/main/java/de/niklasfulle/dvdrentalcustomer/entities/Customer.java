@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalcustomer.entity;
+package de.niklasfulle.dvdrentalcustomer.entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
@@ -68,7 +68,17 @@ public class Customer implements Serializable {
   @JsonbTransient
   private List<Payment> payments;
 
-  public Customer() {
+  public Customer(Integer active, Boolean activebool, Date createDate, String email,
+      String firstName, String lastName, Timestamp lastUpdate, Integer storeId, Address address) {
+    this.active = active;
+    this.activebool = activebool;
+    this.createDate = createDate;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.lastUpdate = lastUpdate;
+    this.storeId = storeId;
+    this.address = address;
   }
 
   // Getter and Setter
@@ -174,4 +184,3 @@ public class Customer implements Serializable {
     return payment;
   }
 }
-

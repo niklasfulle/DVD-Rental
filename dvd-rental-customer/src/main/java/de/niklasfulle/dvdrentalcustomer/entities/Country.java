@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalcustomer.entity;
+package de.niklasfulle.dvdrentalcustomer.entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
@@ -36,7 +36,9 @@ public class Country implements Serializable {
   @JsonbTransient
   private List<City> cities;
 
-  public Country() {
+  public Country(String country, Timestamp lastUpdate) {
+    this.country = country;
+    this.lastUpdate = lastUpdate;
   }
 
   // Getter and Setter

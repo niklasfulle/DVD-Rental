@@ -1,6 +1,5 @@
-package de.niklasfulle.dvdrentalcustomer.entity;
+package de.niklasfulle.dvdrentalcustomer.entities;
 
-import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * The Entity Address represents the address table in the database. Address is responsible for the
@@ -54,7 +54,15 @@ public class Address implements Serializable {
   @JsonbTransient
   private List<Customer> customers;
 
-  public Address() {
+  public Address(String Address, String Address2, String District, City City, String Phone,
+      String PostalCode, Timestamp LastUpdate) {
+    this.address = Address;
+    this.address2 = Address2;
+    this.district = District;
+    this.city = City;
+    this.phone = Phone;
+    this.postalCode = PostalCode;
+    this.lastUpdate = LastUpdate;
   }
 
   // Getter and Setter
@@ -132,19 +140,4 @@ public class Address implements Serializable {
   public void setCustomers(List<Customer> customers) {
     this.customers = customers;
   }
-
-  public Customer addCustomer(Customer customer) {
-    getCustomers().add(customer);
-    customer.setAddress(this);
-
-    return customer;
-  }
-
-  public Customer removeCustomer(Customer customer) {
-    getCustomers().remove(customer);
-    customer.setAddress(null);
-
-    return customer;
-  }
 }
-
