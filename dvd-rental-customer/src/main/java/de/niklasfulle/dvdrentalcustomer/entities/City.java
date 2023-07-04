@@ -49,6 +49,9 @@ public class City implements Serializable {
   @JoinColumn(name = "country_id")
   private Country country;
 
+  public City() {
+  }
+
   public City(String city, Country country, Timestamp lastUpdate) {
     this.city = city;
     this.country = country;

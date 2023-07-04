@@ -1,6 +1,7 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
 import de.niklasfulle.dvdrentalcustomer.entities.Country;
+import jakarta.ejb.Stateless;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Service for Country entity.
  */
+@Stateless
 public class CountryService {
 
   @PersistenceContext
@@ -45,9 +47,9 @@ public class CountryService {
   }
 
   /**
-   * Gets a City object from the database and returns it as a JSON object.
+   * Gets a Country object from the database and returns it as a JSON object.
    *
-   * @param cityId City id
+   * @param countryId Country id
    * @return Response with status code and message
    */
   public Response getCountryById(int countryId) {
@@ -60,10 +62,10 @@ public class CountryService {
   }
 
   /**
-   * Gets a City object from the database by name.
+   * Gets a Country object from the database by name.
    *
-   * @param cityName City name
-   * @return City object
+   * @param countryName Country name
+   * @return Country object
    */
   public Country getCountryByName(String countryName) {
     List<Country> countryList = em.createNamedQuery("Country.getCountryByName", Country.class)
@@ -99,7 +101,7 @@ public class CountryService {
   /**
    * Builds a JsonObject from a Country object.
    *
-   * @param payment Country object
+   * @param country Country object
    * @return JsonObject of Country
    */
   public JsonObject jsonObjectCountryBuilder(Country country) {

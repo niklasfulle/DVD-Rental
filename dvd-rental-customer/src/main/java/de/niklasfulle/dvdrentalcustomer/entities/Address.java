@@ -23,7 +23,7 @@ import java.util.List;
 // NamedQueries for the Address Entity
 @NamedQueries({
     @NamedQuery(name = "Address.getAll", query = "SELECT a FROM Address a"),
-    @NamedQuery(name = "Address.getLastAdress", query = "SELECT r FROM Address r ORDER BY addressId DESC")
+    @NamedQuery(name = "Address.getLastAddressId", query = "SELECT a FROM Address a Order by addressId DESC")
 })
 @Entity
 public class Address implements Serializable {
@@ -58,6 +58,9 @@ public class Address implements Serializable {
   @OneToMany(mappedBy = "address")
   @JsonbTransient
   private List<Customer> customers;
+
+  public Address() {
+  }
 
   public Address(String Address, String Address2, String District, City City, String Phone,
       String PostalCode, Timestamp LastUpdate) {

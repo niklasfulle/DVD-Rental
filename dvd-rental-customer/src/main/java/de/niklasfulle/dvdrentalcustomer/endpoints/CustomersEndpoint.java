@@ -17,6 +17,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.io.InputStream;
+import java.text.ParseException;
 
 /**
  * Endpoint for customers. The customers are stored in the database.
@@ -44,13 +45,14 @@ public class CustomersEndpoint {
    * @param storeId        The store id.
    * @param customerStream The customer data as a JSON object.
    * @return A response with the status code and a message.
+   * @throws ParseException
    */
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public Response createCustomer(@QueryParam("address") Integer addressId,
       @QueryParam("store") Integer storeId,
-      InputStream customerStream) {
+      InputStream customerStream) throws ParseException {
     JsonObject jsonCustomerObject = jsonBuilderService.createJsonObjectFromStream(customerStream);
     if (jsonCustomerObject == null) {
       return Response.status(Response.Status.BAD_REQUEST)

@@ -43,6 +43,9 @@ public class Country implements Serializable {
   @JsonbTransient
   private List<City> cities;
 
+  public Country() {
+  }
+
   public Country(String country, Timestamp lastUpdate) {
     this.country = country;
     this.lastUpdate = lastUpdate;

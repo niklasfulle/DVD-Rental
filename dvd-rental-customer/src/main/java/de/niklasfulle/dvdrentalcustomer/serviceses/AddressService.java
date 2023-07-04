@@ -82,10 +82,13 @@ public class AddressService {
    * @return Response with status code and message
    */
   public Response getLastAddressId() {
-    int ret = em.createQuery("Address.getLastAdress", Address.class)
+    Address address = em.createNamedQuery("Address.getLastAddressId", Address.class)
         .setMaxResults(1)
-        .getSingleResult().getAddressId();
-    return Response.ok().entity(Json.createObjectBuilder().add("id", ret)).build();
+        .getSingleResult();
+    if (address == null) {
+      return Response.status(Response.Status.NOT_FOUND).build();
+    }
+    return Response.ok().entity(jsonObjectAddressBuilder(address)).build();
   }
 
   /**

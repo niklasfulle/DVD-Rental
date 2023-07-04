@@ -29,8 +29,11 @@ public class PaymentService {
    * @return Response with status code and message
    */
   public Response createPayment(JsonObject jsonPaymentObject, Customer customer) {
+
     try {
-      Payment payment = new Payment(new BigDecimal(jsonPaymentObject.getString("amount")),
+      String amountString = jsonPaymentObject.getJsonNumber("amount").toString();
+      BigDecimal amount = new BigDecimal(amountString);
+      Payment payment = new Payment(amount,
           Timestamp.from(Instant.now()),
           Integer.valueOf(jsonPaymentObject.getInt("rental")),
           Integer.valueOf(jsonPaymentObject.getInt("staff")),
@@ -85,7 +88,6 @@ public class PaymentService {
 
     return Response.status(Response.Status.NO_CONTENT).build();
   }
-
 
   public Response getLastPaymentDelete() {
     return Response.ok().entity(em.createNamedQuery("Payment.getLastPayment", Payment.class)

@@ -69,6 +69,9 @@ public class Customer implements Serializable {
   @JsonbTransient
   private List<Payment> payments;
 
+  public Customer() {
+  }
+
   public Customer(Integer active, Boolean activebool, Date createDate, String email,
       String firstName, String lastName, Timestamp lastUpdate, Integer storeId, Address address) {
     this.active = active;

@@ -48,6 +48,9 @@ public class Payment implements Serializable {
   @JoinColumn(name = "customer_id")
   private Customer customer;
 
+  public Payment() {
+  }
+
   public Payment(BigDecimal amount, Timestamp paymentDate, Integer rentalId, Integer staffId,
       Customer customer) {
     this.amount = amount;

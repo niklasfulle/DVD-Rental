@@ -99,7 +99,7 @@ public class AddressesEndpoint {
    * @return A response with the status code and a message.
    */
   @GET
-  @Path("/lastaddress")
+  @Path("/lastaddressid")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getLastAddressId() {
     return addressService.getLastAddressId();

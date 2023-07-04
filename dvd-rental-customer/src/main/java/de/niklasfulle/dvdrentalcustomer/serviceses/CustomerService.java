@@ -7,15 +7,12 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.ProcessingException;
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.format.DateTimeParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,13 +33,17 @@ public class CustomerService {
    * @param storeId            Store id
    * @return Response with status code and message
    */
-  public Response createCustomer(JsonObject jsonCustomerObject, Address address, int storeId) {
-    if (storeId > 0) {
+  public Response createCustomer(JsonObject jsonCustomerObject, Address address, int storeId)
+      throws ParseException {
+
+    // TODO works with the store services
+    
+    /*if (storeId > 0) {
       try {
         Client client = ClientBuilder.newClient();
 
         WebTarget target = client.target(
-            "http://localhost:8080/dvd-rental-store/resources/stores/" + storeId);
+            "http://store-wildfly:8080/dvd-rental-store/resources/stores/" + storeId);
 
         int response = target.request().get().getStatus();
         client.close();
@@ -57,12 +58,15 @@ public class CustomerService {
             .entity("SERVICE_UNAVAILABLE")
             .build();
       }
-    }
+    }*/
 
     Date createDate;
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     try {
-      createDate = Date.valueOf(jsonCustomerObject.getString("createDate"));
-    } catch (DateTimeParseException e) {
+      java.util.Date parsedDate = format.parse(jsonCustomerObject.getString("createDate"));
+      createDate = new Date(parsedDate.getTime());
+      System.out.println("Converted SQL date: " + createDate);
+    } catch (ParseException e) {
       return Response.status(Response.Status.BAD_REQUEST)
           .entity("only allowed: Dateformat as 'YYYY-MM-DD'")
           .build();
@@ -72,7 +76,7 @@ public class CustomerService {
       Customer customer = new Customer(jsonCustomerObject.getInt("active"),
           jsonCustomerObject.getBoolean("activebool"), createDate,
           jsonCustomerObject.getString("email"), jsonCustomerObject.getString("firstName"),
-          jsonCustomerObject.getString("lastName"), Timestamp.from(Instant.now()), storeId,
+          jsonCustomerObject.getString("lastName"), Timestamp.from(Instant.now()), 1,
           address);
 
       em.persist(customer);
