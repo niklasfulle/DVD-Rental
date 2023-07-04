@@ -16,12 +16,6 @@
         <junit.version>5.9.1</junit.version>
     </properties>
     <dependencies>
-        <!--<dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0.1</version>
-            <scope>provided</scope>
-        </dependency>-->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
@@ -80,14 +74,14 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>2.1.210</version>
             <scope>provided</scope>
         </dependency>
         <!-- DB Drive: Postgres (for local Testing) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.22</version>
+            <version>42.6.0</version>
             <scope>provided</scope>
         </dependency>
         <!--  RESTEasy Client Dependency -->
