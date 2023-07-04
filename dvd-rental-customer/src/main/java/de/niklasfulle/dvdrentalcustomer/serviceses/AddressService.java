@@ -1,7 +1,5 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import de.niklasfulle.dvdrentalcustomer.entities.Address;
 import de.niklasfulle.dvdrentalcustomer.entities.City;
 import jakarta.ejb.Stateless;
@@ -10,6 +8,8 @@ import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.core.Response;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 /**
  * Service for Address entity.
@@ -20,6 +20,13 @@ public class AddressService {
   @PersistenceContext
   EntityManager em;
 
+  /**
+   * Creates a new Address object and persists it to the database.
+   *
+   * @param jsonAddressObject JsonObject containing the address data
+   * @param city              City object
+   * @return Response with status code and message
+   */
   public Response createAddress(JsonObject jsonAddressObject, City city) {
     try {
       Address address = new Address(
@@ -29,8 +36,7 @@ public class AddressService {
           city,
           jsonAddressObject.getString("phone"),
           jsonAddressObject.getString("postalCode"),
-          Timestamp.from(Instant.now())
-      );
+          Timestamp.from(Instant.now()));
 
       em.persist(address);
       em.flush();
@@ -45,10 +51,51 @@ public class AddressService {
     }
   }
 
+  /**
+   * Gets an Address object from the database.
+   *
+   * @param addressId Address id
+   * @return Address object
+   */
   public Address getAddress(int addressId) {
     return em.find(Address.class, addressId);
   }
 
+  /**
+   * Gets an Address object from the database and returns it as a JSON object.
+   *
+   * @param addressId Address id
+   * @return Response with status code and message
+   */
+  public Response getAddressById(int addressId) {
+    Address address = em.find(Address.class, addressId);
+    if (address == null) {
+      return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    return Response.ok().entity(jsonObjectAddressBuilder(address)).build();
+  }
+
+  /**
+   * Gets the last address id from the database.
+   *
+   * @return Response with status code and message
+   */
+  public Response getLastAddressId() {
+    int ret = em.createQuery("Address.getLastAdress", Address.class)
+        .setMaxResults(1)
+        .getSingleResult().getAddressId();
+    return Response.ok().entity(Json.createObjectBuilder().add("id", ret)).build();
+  }
+
+  /**
+   * Get all addresses. The addresses are returned as a JSON array. The limit and offset can be used
+   * to limit the number of addresses returned.
+   *
+   * @param limit  The maximum number of addresses to return.
+   * @param offset The number of addresses to skip.
+   * @return A response with the status code and a message.
+   */
   public Response getAllAddressesLimit(int limit, int offset) {
     return Response.ok(em.createNamedQuery("Address.getAll", Address.class)
             .setFirstResult(offset)
@@ -57,24 +104,8 @@ public class AddressService {
         .build();
   }
 
-  public Response getAddressByID(int addressId) {
-    Address address = getAddress(addressId);
-    if (address == null) {
-      return Response.status(Response.Status.NOT_FOUND).build();
-    }
-
-    return Response.ok().entity(jsonObjectAddressBuilder(address)).build();
-  }
-
-  public Response getLastAddressID() {
-    int ret = em.createQuery("SELECT r FROM Address r ORDER BY addressId DESC", Address.class)
-        .setMaxResults(1)
-        .getSingleResult().getAddressId();
-    return Response.ok().entity(Json.createObjectBuilder().add("id", ret)).build();
-  }
-
   /**
-   * Builds a JsonObject from a Address object.
+   * Builds a JsonObject from an Address object.
    *
    * @param payment Address object
    * @return JsonObject of Address

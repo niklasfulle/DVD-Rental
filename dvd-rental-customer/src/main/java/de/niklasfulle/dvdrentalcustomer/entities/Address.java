@@ -1,5 +1,6 @@
 package de.niklasfulle.dvdrentalcustomer.entities;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,20 +8,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
-import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * The Entity Address represents the address table in the database. Address is responsible for the
  * processing of the data of the Address objects in the database.
  */
+// NamedQueries for the Address Entity
+@NamedQueries({
+    @NamedQuery(name = "Address.getAll", query = "SELECT a FROM Address a"),
+    @NamedQuery(name = "Address.getLastAdress", query = "SELECT r FROM Address r ORDER BY addressId DESC")
+})
 @Entity
-@NamedQuery(name = "Address.getAll", query = "SELECT a FROM Address a")
 public class Address implements Serializable {
 
   @Serial

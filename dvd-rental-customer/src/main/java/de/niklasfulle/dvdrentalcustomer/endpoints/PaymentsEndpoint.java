@@ -1,25 +1,24 @@
 package de.niklasfulle.dvdrentalcustomer.endpoints;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import java.io.InputStream;
-import jakarta.ws.rs.DELETE;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.Produces;
-import jakarta.json.JsonObject;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.MediaType;
-
 import de.niklasfulle.dvdrentalcustomer.entities.Customer;
 import de.niklasfulle.dvdrentalcustomer.serviceses.CustomerService;
 import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
 import de.niklasfulle.dvdrentalcustomer.serviceses.PaymentService;
+import jakarta.inject.Inject;
+import jakarta.json.JsonObject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import java.io.InputStream;
 
 /**
- * Endpoint for payments.
+ * Endpoint for payments. The payments are stored in the database.
  */
 @Path("/payments")
 public class PaymentsEndpoint {
@@ -35,6 +34,13 @@ public class PaymentsEndpoint {
   JsonBuilderService jsonBuilderService;
 
   // Endpoints
+
+  /**
+   * Creates a new payment. The payment is stored in the database. The customer must exist.
+   *
+   * @param paymentStream The payment data as a JSON object.
+   * @return A response with the status code and a message.
+   */
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
@@ -57,6 +63,12 @@ public class PaymentsEndpoint {
     return paymentService.createPayment(jsonPaymentObject, customer);
   }
 
+  /**
+   * Get a payment by its Id. The payment is returned as a JSON object.
+   *
+   * @param paymentId The Id of the payment.
+   * @return A response with the status code and a message.
+   */
   @GET
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
@@ -64,6 +76,12 @@ public class PaymentsEndpoint {
     return paymentService.getPaymentById(paymentId);
   }
 
+  /**
+   * Delete a payment by its Id. The payment is deleted from the database.
+   *
+   * @param paymentId The Id of the payment.
+   * @return A response with the status code and a message.
+   */
   @DELETE
   @Path("/{id}")
   @Produces(MediaType.TEXT_PLAIN)

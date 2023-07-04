@@ -1,8 +1,5 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.time.Instant;
 import de.niklasfulle.dvdrentalcustomer.entities.Customer;
 import de.niklasfulle.dvdrentalcustomer.entities.Payment;
 import jakarta.ejb.Stateless;
@@ -11,6 +8,9 @@ import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.core.Response;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 /**
  * Service for Payment entity.
@@ -21,6 +21,13 @@ public class PaymentService {
   @PersistenceContext
   EntityManager em;
 
+  /**
+   * Creates a new Payment object and persists it to the database.
+   *
+   * @param jsonPaymentObject JsonObject containing the payment data
+   * @param customer          Customer object
+   * @return Response with status code and message
+   */
   public Response createPayment(JsonObject jsonPaymentObject, Customer customer) {
     try {
       Payment payment = new Payment(new BigDecimal(jsonPaymentObject.getString("amount")),
@@ -42,6 +49,12 @@ public class PaymentService {
     }
   }
 
+  /**
+   * Gets a Payment object from the database and returns it as a JSON object.
+   *
+   * @param paymentId Payment id
+   * @return Response with status code and message
+   */
   public Response getPaymentById(int paymentId) {
     Payment payment = em.find(Payment.class, paymentId);
     if (payment == null) {
@@ -53,6 +66,12 @@ public class PaymentService {
     return Response.ok().entity(jsonObjectPaymentBuilder(payment)).build();
   }
 
+  /**
+   * Deletes a Payment object from the database.
+   *
+   * @param paymentId Payment id
+   * @return Response with status code and message
+   */
   public Response deletePaymentsById(int paymentId) {
     Payment payment = em.find(Payment.class, paymentId);
     if (payment == null) {
@@ -66,6 +85,7 @@ public class PaymentService {
 
     return Response.status(Response.Status.NO_CONTENT).build();
   }
+
 
   public Response getLastPaymentDelete() {
     return Response.ok().entity(em.createNamedQuery("Payment.getLastPayment", Payment.class)

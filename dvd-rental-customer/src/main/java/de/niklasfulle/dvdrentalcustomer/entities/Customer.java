@@ -24,10 +24,11 @@ import java.util.List;
  * The Entity Customer represents the customer table in the database. Customer is responsible for
  * the processing of the data of the Customer objects in the database.
  */
-@Entity
+// NamedQueries for the Customer Entity
 @NamedQueries({
     @NamedQuery(name = "Customer.getAll", query = "SELECT c FROM Customer c")
 })
+@Entity
 public class Customer implements Serializable {
 
   @Serial

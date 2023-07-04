@@ -20,11 +20,12 @@ import java.util.List;
  * The Entity City represents the city table in the database. City is responsible for the processing
  * of the data of the City objects in the database.
  */
-@Entity
+// NamedQueries for the City Entity
 @NamedQueries({
     @NamedQuery(name = "City.getAll", query = "SELECT c FROM City c"),
     @NamedQuery(name = "City.getCityByName", query = "SELECT c from City c WHERE city = ?1")
 })
+@Entity
 public class City implements Serializable {
 
   @Serial

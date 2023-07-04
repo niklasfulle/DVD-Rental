@@ -1,11 +1,5 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.format.DateTimeParseException;
-import java.sql.Date;
-import java.util.LinkedList;
-import java.util.List;
 import de.niklasfulle.dvdrentalcustomer.entities.Address;
 import de.niklasfulle.dvdrentalcustomer.entities.Customer;
 import jakarta.ejb.Stateless;
@@ -18,6 +12,12 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Service for Customer entity.
@@ -28,6 +28,14 @@ public class CustomerService {
   @PersistenceContext
   EntityManager em;
 
+  /**
+   * Creates a new Customer object and persists it to the database. Checks if the storeId is valid.
+   *
+   * @param jsonCustomerObject JsonObject containing the customer data
+   * @param address            Address object
+   * @param storeId            Store id
+   * @return Response with status code and message
+   */
   public Response createCustomer(JsonObject jsonCustomerObject, Address address, int storeId) {
     if (storeId > 0) {
       try {
@@ -80,19 +88,24 @@ public class CustomerService {
     }
   }
 
+  /**
+   * Gets a Customer object from the database.
+   *
+   * @param customerId Customer id
+   * @return Customer object
+   */
   public Customer getCustomer(int customerId) {
     return em.find(Customer.class, customerId);
   }
 
-  public Response getCustomerCount() {
-    return Response.ok().entity(em.createNamedQuery("Customer.getAll", Customer.class)
-            .getResultList()
-            .size())
-        .build();
-  }
-
-  public Response getCustomerByID(int customerId) {
-    Customer customer = getCustomer(customerId);
+  /**
+   * Gets a Customer object from the database and returns it as a JSON object.
+   *
+   * @param customerId Customer id
+   * @return Response with status code and message
+   */
+  public Response getCustomerById(int customerId) {
+    Customer customer = em.find(Customer.class, customerId);
     if (customer == null) {
       return Response.status(Response.Status.NOT_FOUND)
           .entity("Customer not found.")
@@ -102,8 +115,26 @@ public class CustomerService {
     return Response.ok().entity(jsonObjectCustomerBuilder(customer)).build();
   }
 
+  /**
+   * Returns the number of customers in the database.
+   *
+   * @return Response with status code and message
+   */
+  public Response getCustomerCount() {
+    return Response.ok().entity(em.createNamedQuery("Customer.getAll", Customer.class)
+            .getResultList()
+            .size())
+        .build();
+  }
+
+  /**
+   * Gets all Payments of a Customer. Returns a list of JSON objects.
+   *
+   * @param customerId Customer id
+   * @return Response with status code and message
+   */
   public Response getPaymentsByCustomerId(int customerId) {
-    Customer customer = getCustomer(customerId);
+    Customer customer = em.find(Customer.class, customerId);
     if (customer == null) {
       return Response.status(Response.Status.NOT_FOUND)
           .entity("Customer not found.")
@@ -113,6 +144,14 @@ public class CustomerService {
     return Response.ok().entity(customer.getPayments()).build();
   }
 
+  /**
+   * Get all customers. The customers are returned as a JSON array. The limit and offset can be used
+   * to limit the number of customers returned.
+   *
+   * @param limit  The maximum number of customers to return.
+   * @param offset The number of customers to skip.
+   * @return A response with the status code and a message.
+   */
   public Response getCustomersLimit(int limit, int offset) {
     List<Customer> customerList = em.createNamedQuery("Customer.getAll", Customer.class)
         .setFirstResult(offset)
@@ -130,7 +169,7 @@ public class CustomerService {
   /**
    * Builds a JsonObject from a Customer object.
    *
-   * @param payment Customer object
+   * @param customer Customer object
    * @return JsonObject of Customer
    */
   public JsonObject jsonObjectCustomerBuilder(Customer customer) {

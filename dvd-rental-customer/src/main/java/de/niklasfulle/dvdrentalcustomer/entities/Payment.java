@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,8 +18,11 @@ import java.sql.Timestamp;
  * The Entity Payment represents the payment table in the database. Payment is responsible for the
  * processing of the data of the Payment objects in the database.
  */
+// NamedQueries for the Payment Entity
+@NamedQueries({
+    @NamedQuery(name = "Payment.getLastPayment", query = "SELECT r FROM Payment r ORDER BY paymentId DESC")
+})
 @Entity
-@NamedQuery(name = "Payment.getLastPayment", query = "SELECT r FROM Payment r ORDER BY paymentId DESC")
 public class Payment implements Serializable {
 
   @Serial
