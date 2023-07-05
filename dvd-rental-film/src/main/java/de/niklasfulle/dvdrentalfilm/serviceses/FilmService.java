@@ -263,12 +263,8 @@ public class FilmService {
    * @return film or null
    */
   public Film getFilm(int filmId) {
-    List<Film> filmList = em.createQuery("select f from Film f JOIN where filmId = ?1", Film.class)
-        .setParameter(1, filmId)
-        .setMaxResults(1)
-        .getResultList();
-
-    return filmList.size() == 1 ? filmList.get(0) : null;
+    Film film = em.find(Film.class, filmId);
+    return film;
   }
 
   /**

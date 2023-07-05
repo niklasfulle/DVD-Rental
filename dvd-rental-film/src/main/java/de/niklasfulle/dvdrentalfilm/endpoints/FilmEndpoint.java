@@ -55,9 +55,8 @@ public class FilmEndpoint {
   // Endpoints
 
   /**
-   * Create a new filmStream. The filmStream data is passed as a JSON object in
-   * the request body. The city
-   * and Country must exist.
+   * Create a new filmStream. The filmStream data is passed as a JSON object in the request body.
+   * The city and Country must exist.
    *
    * @param filmStream The film data as a JSON object.
    * @return A response with the status code and a message.
@@ -78,7 +77,7 @@ public class FilmEndpoint {
 
   /**
    * Patchs a film by its Id. The film data is passed as a JSON object in the
-   * 
+   *
    * @param filmId     The Id of the film.
    * @param filmStream The film data as a JSON object.
    * @return A response with the status code and a message.
@@ -113,7 +112,7 @@ public class FilmEndpoint {
 
   /**
    * Get a film by its Id. The film is returned as a JSON object.
-   * 
+   *
    * @param filmId The Id of the film.
    * @return A response with the status code and a message.
    */
@@ -125,8 +124,8 @@ public class FilmEndpoint {
   }
 
   /**
-   * Get all films. The films are returned as a JSON array. The limit and offset can be used
-   * to limit the number of films returned.
+   * Get all films. The films are returned as a JSON array. The limit and offset can be used to
+   * limit the number of films returned.
    *
    * @param limit  The maximum number of films to return.
    * @param offset The number of films to skip.
@@ -141,7 +140,7 @@ public class FilmEndpoint {
 
   /**
    * Adds a category to a film by its Id.
-   * 
+   *
    * @param filmId       The Id of the film.
    * @param categoryName The name of the category.
    * @return A response with the status code and a message.
@@ -156,7 +155,7 @@ public class FilmEndpoint {
 
   /**
    * Adds an actor to a film by its Id.
-   * 
+   *
    * @param filmId  The Id of the film.
    * @param actorId The Id of the actor.
    * @return A response with the status code and a message.
@@ -170,7 +169,7 @@ public class FilmEndpoint {
 
   /**
    * Get the categories of a film by its Id.
-   * 
+   *
    * @param filmId The Id of the film.
    * @return The categories of the film.
    */
@@ -183,7 +182,7 @@ public class FilmEndpoint {
 
   /**
    * Get the actors of a film by its Id.
-   * 
+   *
    * @param filmId The Id of the film.
    * @return The actors of the film.
    */

@@ -41,7 +41,8 @@ public class LanguageService {
 
     em.persist(language);
 
-    return Response.ok(language)
+    return Response.status(Response.Status.CREATED)
+        .entity("Language created")
         .build();
   }
 

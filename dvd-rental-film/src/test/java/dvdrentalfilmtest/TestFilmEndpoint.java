@@ -1,14 +1,14 @@
 package dvdrentalfilmtest;
 
-import org.junit.jupiter.api.Test;
-import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
+import org.junit.jupiter.api.Test;
 
 /**
  * This class is used to test the FilmEndpoint class.
@@ -18,15 +18,18 @@ public class TestFilmEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-film/resources/films";
 
-  private static final String DEFAULT_FILM = "{ \"actors\": { \"href\": \"http://localhost:8080/dvd-rental-film/resources/actors/1\" }, "
-      + "\"categories\": [ \"Comedy\" ], \"description\": \"A funny movie\", "
-      + "\"id\": 0, \"language\": \"English\", \"length\": 90, "
-      + "\"rating\": \"P18\", \"releaseYear\": 2009, \"rentalDuration\": 4, "
-      + "\"rentalRate\": 4.3, \"replacementCost\": 9.99, \"title\": \"Jakarta 2077\" }";
+  // Default film
+  private static final String DEFAULT_FILM =
+      "{ \"actors\": { \"href\": \"http://localhost:8080/dvd-rental-film/resources/actors/1\" }, "
+          + "\"categories\": [ \"Comedy\" ], \"description\": \"A funny movie\", "
+          + "\"id\": 0, \"language\": \"English\", \"length\": 90, "
+          + "\"rating\": \"P18\", \"releaseYear\": 2009, \"rentalDuration\": 4, "
+          + "\"rentalRate\": 4.3, \"replacementCost\": 9.99, \"title\": \"Jakarta 2077\" }";
 
   /**
-  * 
-  */
+   * Tests the createFilm method of the FilmEndpoint class. The method should return a 201 status
+   * code.
+   */
   @Test
   public void testCreateFilmCreated() {
     Client client = ClientBuilder.newClient();
@@ -38,7 +41,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests the createFilm method of the FilmEndpoint class. The method should return a 400 status
+   * code.
    */
   @Test
   public void testCreateFilmBadRequest() {
@@ -55,24 +59,27 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests the createFilm method of the FilmEndpoint class. The method should return a 404 status
+   * code.
    */
   @Test
   public void testCreateFilmActorNotFound() {
     Client client = ClientBuilder.newClient();
     final WebTarget target = client.target(PATH);
-    String json = "{ \"actors\": { \"href\": \"http://localhost:8080/dvd-rental-film/resources/actors/1123123123\" }, "
-        + "\"categories\": [ \"Comedy\" ], \"description\": \"A funny movie\", "
-        + "\"id\": 0, \"language\": \"asdw\", \"length\": 90, "
-        + "\"rating\": \"P18\", \"releaseYear\": 2009, \"rentalDuration\": 4, "
-        + "\"rentalRate\": 4.3, \"replacementCost\": 9.99, \"title\": \"Jakarta 2077\" }";
+    String json =
+        "{ \"actors\": { \"href\": \"http://localhost:8080/dvd-rental-film/resources/actors/1123123123\" }, "
+            + "\"categories\": [ \"Comedy\" ], \"description\": \"A funny movie\", "
+            + "\"id\": 0, \"language\": \"asdw\", \"length\": 90, "
+            + "\"rating\": \"P18\", \"releaseYear\": 2009, \"rentalDuration\": 4, "
+            + "\"rentalRate\": 4.3, \"replacementCost\": 9.99, \"title\": \"Jakarta 2077\" }";
     Response response = target.request().post(Entity.entity(json, "application/json"));
     client.close();
     assert (response.getStatus() == 404);
   }
 
   /**
-   * 
+   * Tests getFilmsLimit method of the FilmEndpoint class. If the response array is not empty, The
+   * method should return a 200 status code.
    */
   @Test
   public void testGetListFilms100() {
@@ -86,7 +93,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests getFilmsLimit method of the FilmEndpoint class. If the response array is empty, The
+   * method should return a 200 status code.
    */
   @Test
   public void testGetListFilms0() {
@@ -100,7 +108,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the count of films is greater than 0. The method should return a 200 status code.
    */
   @Test
   public void testGetFilmsCount() {
@@ -114,7 +122,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the film with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetFilmByIdOk() {
@@ -128,7 +136,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the film with the id 7777777777 is returned. The method should return a 404 status
+   * code.
    */
   @Test
   public void testGetFilmByIdNotFound() {
@@ -140,7 +149,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actors from the film with the id 8 are returned. The method should return a 200
    */
   @Test
   public void testGetActorsByFilmIdOk() {
@@ -154,7 +163,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actors from the film with the id 6666666 are returned. The method should return a
+   * 404
    */
   @Test
   public void testGetActorsByFilmIdNotFound() {
@@ -166,7 +176,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actor can added to the last film. The method should return a 201
    */
   @Test
   public void testAddActorToFilmCreated() {
@@ -189,7 +199,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actor can added to the last film. The method should return a 406
    */
   @Test
   public void testAddActorToFilmNotAcceptable() {
@@ -213,7 +223,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actor can added to the film with the id 6666666666. The method should return a
+   * 404
    */
   @Test
   public void testAddActorToFilmNotFound() {
@@ -226,7 +237,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the category can added to the last film. The method should return a 201
    */
   @Test
   public void testAddCategoriesToFilmCreated() {
@@ -250,7 +261,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the category can added to the last film. The method should return a 406
    */
   @Test
   public void testAddCategoriesToFilmNotAcceptable() {
@@ -274,7 +285,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the actor can added to the film with the id 2342342342. The method should return a
+   * 404
    */
   @Test
   public void testAddCategoriesToFilmNotFound() {
@@ -286,7 +298,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the categories from the film with the id 1 are returned. The method should return a
+   * 200
    */
   @Test
   public void testGetCategoryByFilmIdOk() {
@@ -300,7 +313,8 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the categories from the film with the id 1010101010 are returned. The method should
+   * return a 404
    */
   @Test
   public void testGetCategoryByFilmIdNotFound() {
@@ -313,7 +327,7 @@ public class TestFilmEndpoint {
   }
 
   /**
-   * 
+   * Tests if the created film can be deleted. The method should return a 204 status code.
    */
   @Test
   public void testDelteFilmById() {

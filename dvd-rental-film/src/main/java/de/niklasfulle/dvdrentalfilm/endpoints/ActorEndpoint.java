@@ -117,6 +117,8 @@ public class ActorEndpoint {
    * @param offset The number of actors to skip.
    * @return A response with the status code and a message.
    */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
   public Response getActorListLimit(@QueryParam("limit") @DefaultValue("100") int limit,
       @QueryParam("offset") @DefaultValue("0") int offset) {
     return actorService.getAllActorsLimit(limit, offset);

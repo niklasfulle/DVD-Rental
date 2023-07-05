@@ -1,7 +1,5 @@
 package de.niklasfulle.dvdrentalfilm.endpoints;
 
-import java.io.InputStream;
-
 import de.niklasfulle.dvdrentalfilm.serviceses.CategoryService;
 import de.niklasfulle.dvdrentalfilm.serviceses.JsonBuilderService;
 import jakarta.inject.Inject;
@@ -13,6 +11,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.io.InputStream;
 
 /**
  * Endpoint for categories. The categories are stored in the database.
@@ -51,7 +50,7 @@ public class CategoryEndpoint {
 
   /**
    * Returns all categories.
-   * 
+   *
    * @return all categories
    */
   @GET

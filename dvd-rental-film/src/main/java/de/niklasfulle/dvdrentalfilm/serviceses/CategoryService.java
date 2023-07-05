@@ -1,14 +1,14 @@
 package de.niklasfulle.dvdrentalfilm.serviceses;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-
 import de.niklasfulle.dvdrentalfilm.entities.Category;
 import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.core.Response;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.List;
 
 /**
  * Service for Category entity.
@@ -41,7 +41,8 @@ public class CategoryService {
 
     em.persist(category);
 
-    return Response.ok(category)
+    return Response.status(Response.Status.CREATED)
+        .entity("Category created")
         .build();
   }
 
@@ -52,7 +53,7 @@ public class CategoryService {
    */
   public Response getAllCategories() {
     return Response.ok(em.createNamedQuery("Category.getAll", Category.class)
-        .getResultList())
+            .getResultList())
         .build();
   }
 
@@ -63,8 +64,11 @@ public class CategoryService {
    * @return Category object
    */
   public Category getCategoryByName(String categoryName) {
-    return em.createNamedQuery("Category.getCategoryByName", Category.class)
+    List<Category> list = em.createNamedQuery("Category.getCategoryByName", Category.class)
         .setParameter(1, categoryName)
-        .getSingleResult();
+        .setMaxResults(1)
+        .getResultList();
+
+    return !list.isEmpty() ? list.get(0) : null;
   }
 }
