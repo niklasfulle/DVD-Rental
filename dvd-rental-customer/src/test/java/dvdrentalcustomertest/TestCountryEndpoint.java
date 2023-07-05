@@ -18,6 +18,10 @@ public class TestCountryEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/countries";
 
+  /**
+   * Tests the createCountry method of the CountriesEndpoint class.
+   * The method should return a 201 status code.
+   */
   @Test
   public void testCreateCountryCreated() {
     Client client = ClientBuilder.newBuilder().build();
@@ -28,6 +32,10 @@ public class TestCountryEndpoint {
     assert (response.getStatus() == 201);
   }
 
+  /**
+   * Tests the createCountry method of the CountriesEndpoint class.
+   * The method should return a 400 status code.
+   */
   @Test
   public void testCreateCountryBadRequest() {
     Client client = ClientBuilder.newBuilder().build();
@@ -38,6 +46,10 @@ public class TestCountryEndpoint {
     assert (response.getStatus() == 400);
   }
 
+  /**
+   * Tests if the country with the id 1 is returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetCountryByIdOk() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -49,6 +61,10 @@ public class TestCountryEndpoint {
     assert (customerJson.contains("\"id\":1"));
   }
 
+  /**
+   * Tests if the country with the id 666 is returned.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testGetCountryByIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();

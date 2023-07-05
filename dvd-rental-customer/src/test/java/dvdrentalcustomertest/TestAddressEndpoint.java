@@ -18,6 +18,10 @@ public class TestAddressEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/addresses";
 
+  /**
+   * Tests the createAddress method of the AddressEndpoint class.
+   * The method should return a 201 status code.
+   */
   @Test
   public void testCreateAddressCreated() {
     Client client = ClientBuilder.newBuilder().build();
@@ -31,6 +35,10 @@ public class TestAddressEndpoint {
     assert (response.getStatus() == 201);
   }
 
+  /**
+   * Tests the createAddress method of the AddressEndpoint class.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testCreateAddressNotFound() {
     Client client = ClientBuilder.newBuilder().build();
@@ -44,6 +52,10 @@ public class TestAddressEndpoint {
     assert (response.getStatus() == 404);
   }
 
+  /**
+   * Tests the createAddress method of the AddressEndpoint class.
+   * The method should return a 400 status code.
+   */
   @Test
   public void testCreateAddressBadRequest() {
     Client client = ClientBuilder.newBuilder().build();
@@ -57,6 +69,11 @@ public class TestAddressEndpoint {
     assert (response.getStatus() == 400);
   }
 
+  /**
+   * Tests getAddressesLimit method of the AddressEndpoint class. If the response
+   * array is not empty,
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetAddressesLimit100() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -68,6 +85,11 @@ public class TestAddressEndpoint {
     assert (!addressListJson.equals("[]"));
   }
 
+  /**
+   * Tests getAddressesLimit method of the AddressEndpoint class. If the response
+   * array is empty,
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetAddressesLimit0() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -79,6 +101,10 @@ public class TestAddressEndpoint {
     assert (addressListJson.equals("[]"));
   }
 
+  /**
+   * Tests if the address with the id 1 is returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetAddressByIdOk() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -90,6 +116,10 @@ public class TestAddressEndpoint {
     assert (addressJson.contains("\"id\":1"));
   }
 
+  /**
+   * Tests if the address with the id 666666 is returned.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testGetAddressByIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();

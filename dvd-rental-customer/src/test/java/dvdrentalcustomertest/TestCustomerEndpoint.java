@@ -18,6 +18,10 @@ public class TestCustomerEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/customers";
 
+  /**
+   * Tests the createCustomer method of the CustomerEndpoint class.
+   * The method should return a 201 status code.
+   */
   @Test
   public void testCreateCustomerCreated() {
     Client client = ClientBuilder.newBuilder().build();
@@ -32,6 +36,10 @@ public class TestCustomerEndpoint {
     assert (response.getStatus() == 201);
   }
 
+  /**
+   * Tests the createCustomer method of the CustomerEndpoint class.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testCreateCustomerNotFound() {
     Client client = ClientBuilder.newBuilder().build();
@@ -45,6 +53,10 @@ public class TestCustomerEndpoint {
     assert (response.getStatus() == 404);
   }
 
+  /**
+   * Tests the createCustomer method of the CustomerEndpoint class.
+   * The method should return a 400 status code.
+   */
   @Test
   public void testCreateCustomerBadRequest() {
     Client client = ClientBuilder.newBuilder().build();
@@ -58,6 +70,10 @@ public class TestCustomerEndpoint {
     assert (response.getStatus() == 400);
   }
 
+  /**
+   * Tests if the count of customers is greater than 0.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetCustomersCount() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -69,6 +85,10 @@ public class TestCustomerEndpoint {
     assert (numCustomers > 0);
   }
 
+  /**
+   * Tests if the customer with the id 1 is returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetCustomerByIdOk() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -80,6 +100,10 @@ public class TestCustomerEndpoint {
     assert (customerJson.contains("\"id\":1"));
   }
 
+  /**
+   * Tests if the customer with the id 66 is returned.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testGetCustomerByIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -89,6 +113,10 @@ public class TestCustomerEndpoint {
     assert (response == 404);
   }
 
+  /**
+   * Tests if the payments from customer with the id 1 are returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetPaymentsByCustomerIdOk() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -100,6 +128,10 @@ public class TestCustomerEndpoint {
     assert (!customerPaymentsJson.contains("[]"));
   }
 
+  /**
+   * Tests if the payments from customer with the id 666 are returned.
+   * The method should return a 204 status code.
+   */
   @Test
   public void testGetPaymentsByCustomerIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();

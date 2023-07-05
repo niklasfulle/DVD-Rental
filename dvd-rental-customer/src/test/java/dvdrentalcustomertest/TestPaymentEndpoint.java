@@ -18,6 +18,10 @@ public class TestPaymentEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/payments";
 
+  /**
+   * Tests the createPayment method of the PaymentsEndpoint class.
+   * The method should return a 201 status code.
+   */
   @Test
   public void testCreatePaymentCreated() {
     Client client = ClientBuilder.newBuilder().build();
@@ -30,6 +34,10 @@ public class TestPaymentEndpoint {
     assert (response.getStatus() == 201);
   }
 
+  /**
+   * Tests the createPayment method of the PaymentsEndpoint class.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testCreatePaymentNotFound() {
     Client client = ClientBuilder.newBuilder().build();
@@ -41,6 +49,10 @@ public class TestPaymentEndpoint {
     assert (response.getStatus() == 404);
   }
 
+  /**
+   * Tests the createPayment method of the PaymentsEndpoint class.
+   * The method should return a 400 status code.
+   */
   @Test
   public void testCreatePaymentBadRequest() {
     Client client = ClientBuilder.newBuilder().build();
@@ -52,6 +64,10 @@ public class TestPaymentEndpoint {
     assert (response.getStatus() == 400);
   }
 
+  /**
+   * Tests if the payment with the id 17503 is returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetPaymentByIdOk() {
     final ResteasyClient client = new ResteasyClientBuilderImpl().build();
@@ -63,6 +79,10 @@ public class TestPaymentEndpoint {
     assert (jsonPayments.contains("\"id\":17503"));
   }
 
+  /**
+   * Tests if the payment with the id 666 is returned.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testGetPaymentByIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -72,6 +92,10 @@ public class TestPaymentEndpoint {
     assert (response == 404);
   }
 
+  /**
+   * Tests if the created payment can be deleted.
+   * The method should return a 204 status code.
+   */
   @Test
   public void testDeletePaymentsById() {
     Client client = ClientBuilder.newBuilder().build();

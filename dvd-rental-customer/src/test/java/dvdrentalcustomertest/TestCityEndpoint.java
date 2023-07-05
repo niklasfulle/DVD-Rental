@@ -18,6 +18,10 @@ public class TestCityEndpoint {
   // URL of the endpoint
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/cities";
 
+  /**
+   * Tests the createCity method of the CitiesEndpoint class.
+   * The method should return a 201 status code.
+   */
   @Test
   public void testCreateCityCreated() {
     Client client = ClientBuilder.newBuilder().build();
@@ -29,6 +33,10 @@ public class TestCityEndpoint {
     assert (response.getStatus() == 201);
   }
 
+  /**
+   * Tests the createCity method of the CitiesEndpoint class.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testCreateCityNotFound() {
     Client client = ClientBuilder.newBuilder().build();
@@ -40,6 +48,10 @@ public class TestCityEndpoint {
     assert (response.getStatus() == 404);
   }
 
+  /**
+   * Tests the createCity method of the CitiesEndpoint class.
+   * The method should return a 400 status code.
+   */
   @Test
   public void testCreateCityBadRequest() {
     Client client = ClientBuilder.newBuilder().build();
@@ -51,6 +63,10 @@ public class TestCityEndpoint {
     assert (response.getStatus() == 400);
   }
 
+  /**
+   * Tests if the city with the id 1 is returned.
+   * The method should return a 200 status code.
+   */
   @Test
   public void testGetCityByIdOk() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
@@ -62,6 +78,10 @@ public class TestCityEndpoint {
     assert (customerJson.contains("\"id\":1"));
   }
 
+  /**
+   * Tests if the city with the id 666 is returned.
+   * The method should return a 404 status code.
+   */
   @Test
   public void testGetCityByIdNotFound() {
     ResteasyClient resteasyClient = new ResteasyClientBuilderImpl().build();
