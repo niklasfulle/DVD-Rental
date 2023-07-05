@@ -18,8 +18,11 @@ import java.time.Instant;
 @Stateless
 public class PaymentService {
 
+  // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
+
+  // Methods
 
   /**
    * Creates a new Payment object and persists it to the database.

@@ -19,8 +19,8 @@ public class TestCustomerEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/customers";
 
   /**
-   * Tests the createCustomer method of the CustomerEndpoint class.
-   * The method should return a 201 status code.
+   * Tests the createCustomer method of the CustomerEndpoint class. The method should return a 201
+   * status code.
    */
   @Test
   public void testCreateCustomerCreated() {
@@ -32,13 +32,12 @@ public class TestCustomerEndpoint {
         + "\"lastName\": \"Bruhns\", \"store\": { \"href\": \"http://localhost:8080/dvd-rental-store/resources/stores/2\" } }";
     Response response = target.request().post(Entity.entity(json, "application/json"));
     client.close();
-    System.out.println(response.getStatus());
     assert (response.getStatus() == 201);
   }
 
   /**
-   * Tests the createCustomer method of the CustomerEndpoint class.
-   * The method should return a 404 status code.
+   * Tests the createCustomer method of the CustomerEndpoint class. The method should return a 404
+   * status code.
    */
   @Test
   public void testCreateCustomerNotFound() {
@@ -54,8 +53,8 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests the createCustomer method of the CustomerEndpoint class.
-   * The method should return a 400 status code.
+   * Tests the createCustomer method of the CustomerEndpoint class. The method should return a 400
+   * status code.
    */
   @Test
   public void testCreateCustomerBadRequest() {
@@ -71,8 +70,7 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests if the count of customers is greater than 0.
-   * The method should return a 200 status code.
+   * Tests if the count of customers is greater than 0. The method should return a 200 status code.
    */
   @Test
   public void testGetCustomersCount() {
@@ -86,8 +84,7 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests if the customer with the id 1 is returned.
-   * The method should return a 200 status code.
+   * Tests if the customer with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetCustomerByIdOk() {
@@ -101,8 +98,7 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests if the customer with the id 66 is returned.
-   * The method should return a 404 status code.
+   * Tests if the customer with the id 66 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetCustomerByIdNotFound() {
@@ -114,8 +110,8 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests if the payments from customer with the id 1 are returned.
-   * The method should return a 200 status code.
+   * Tests if the payments from customer with the id 1 are returned. The method should return a 200
+   * status code.
    */
   @Test
   public void testGetPaymentsByCustomerIdOk() {
@@ -129,8 +125,8 @@ public class TestCustomerEndpoint {
   }
 
   /**
-   * Tests if the payments from customer with the id 666 are returned.
-   * The method should return a 204 status code.
+   * Tests if the payments from customer with the id 666 are returned. The method should return a
+   * 204 status code.
    */
   @Test
   public void testGetPaymentsByCustomerIdNotFound() {

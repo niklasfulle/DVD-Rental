@@ -19,8 +19,11 @@ import java.util.List;
 @Stateless
 public class CityService {
 
+  // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
+
+  // Methods
 
   /**
    * Creates a new City object and persists it to the database.

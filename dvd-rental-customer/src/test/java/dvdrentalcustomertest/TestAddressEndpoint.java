@@ -19,8 +19,8 @@ public class TestAddressEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/addresses";
 
   /**
-   * Tests the createAddress method of the AddressEndpoint class.
-   * The method should return a 201 status code.
+   * Tests the createAddress method of the AddressEndpoint class. The method should return a 201
+   * status code.
    */
   @Test
   public void testCreateAddressCreated() {
@@ -36,8 +36,8 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests the createAddress method of the AddressEndpoint class.
-   * The method should return a 404 status code.
+   * Tests the createAddress method of the AddressEndpoint class. The method should return a 404
+   * status code.
    */
   @Test
   public void testCreateAddressNotFound() {
@@ -53,8 +53,8 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests the createAddress method of the AddressEndpoint class.
-   * The method should return a 400 status code.
+   * Tests the createAddress method of the AddressEndpoint class. The method should return a 400
+   * status code.
    */
   @Test
   public void testCreateAddressBadRequest() {
@@ -70,9 +70,8 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests getAddressesLimit method of the AddressEndpoint class. If the response
-   * array is not empty,
-   * The method should return a 200 status code.
+   * Tests getAddressesLimit method of the AddressEndpoint class. If the response array is not
+   * empty, The method should return a 200 status code.
    */
   @Test
   public void testGetAddressesLimit100() {
@@ -86,8 +85,7 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests getAddressesLimit method of the AddressEndpoint class. If the response
-   * array is empty,
+   * Tests getAddressesLimit method of the AddressEndpoint class. If the response array is empty,
    * The method should return a 200 status code.
    */
   @Test
@@ -102,8 +100,7 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests if the address with the id 1 is returned.
-   * The method should return a 200 status code.
+   * Tests if the address with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetAddressByIdOk() {
@@ -117,8 +114,8 @@ public class TestAddressEndpoint {
   }
 
   /**
-   * Tests if the address with the id 666666 is returned.
-   * The method should return a 404 status code.
+   * Tests if the address with the id 666666 is returned. The method should return a 404 status
+   * code.
    */
   @Test
   public void testGetAddressByIdNotFound() {

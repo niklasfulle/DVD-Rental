@@ -19,8 +19,8 @@ public class TestCountryEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/countries";
 
   /**
-   * Tests the createCountry method of the CountriesEndpoint class.
-   * The method should return a 201 status code.
+   * Tests the createCountry method of the CountriesEndpoint class. The method should return a 201
+   * status code.
    */
   @Test
   public void testCreateCountryCreated() {
@@ -33,8 +33,8 @@ public class TestCountryEndpoint {
   }
 
   /**
-   * Tests the createCountry method of the CountriesEndpoint class.
-   * The method should return a 400 status code.
+   * Tests the createCountry method of the CountriesEndpoint class. The method should return a 400
+   * status code.
    */
   @Test
   public void testCreateCountryBadRequest() {
@@ -47,8 +47,7 @@ public class TestCountryEndpoint {
   }
 
   /**
-   * Tests if the country with the id 1 is returned.
-   * The method should return a 200 status code.
+   * Tests if the country with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetCountryByIdOk() {
@@ -62,8 +61,7 @@ public class TestCountryEndpoint {
   }
 
   /**
-   * Tests if the country with the id 666 is returned.
-   * The method should return a 404 status code.
+   * Tests if the country with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetCountryByIdNotFound() {

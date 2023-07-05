@@ -19,8 +19,8 @@ public class TestCityEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/cities";
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class.
-   * The method should return a 201 status code.
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 201 status
+   * code.
    */
   @Test
   public void testCreateCityCreated() {
@@ -34,8 +34,8 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class.
-   * The method should return a 404 status code.
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 404 status
+   * code.
    */
   @Test
   public void testCreateCityNotFound() {
@@ -49,8 +49,8 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class.
-   * The method should return a 400 status code.
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 400 status
+   * code.
    */
   @Test
   public void testCreateCityBadRequest() {
@@ -64,8 +64,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests if the city with the id 1 is returned.
-   * The method should return a 200 status code.
+   * Tests if the city with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetCityByIdOk() {
@@ -79,8 +78,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests if the city with the id 666 is returned.
-   * The method should return a 404 status code.
+   * Tests if the city with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetCityByIdNotFound() {

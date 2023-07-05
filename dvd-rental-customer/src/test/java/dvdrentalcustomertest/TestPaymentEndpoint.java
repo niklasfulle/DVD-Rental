@@ -19,8 +19,8 @@ public class TestPaymentEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-customer/resources/payments";
 
   /**
-   * Tests the createPayment method of the PaymentsEndpoint class.
-   * The method should return a 201 status code.
+   * Tests the createPayment method of the PaymentsEndpoint class. The method should return a 201
+   * status code.
    */
   @Test
   public void testCreatePaymentCreated() {
@@ -30,13 +30,12 @@ public class TestPaymentEndpoint {
         + "\"staff\":2,\"date\":\"2020-04-06 15:09\"}";
     Response response = target.request().post(Entity.entity(json, "application/json"));
     client.close();
-    System.out.println(response.getStatus());
     assert (response.getStatus() == 201);
   }
 
   /**
-   * Tests the createPayment method of the PaymentsEndpoint class.
-   * The method should return a 404 status code.
+   * Tests the createPayment method of the PaymentsEndpoint class. The method should return a 404
+   * status code.
    */
   @Test
   public void testCreatePaymentNotFound() {
@@ -50,8 +49,8 @@ public class TestPaymentEndpoint {
   }
 
   /**
-   * Tests the createPayment method of the PaymentsEndpoint class.
-   * The method should return a 400 status code.
+   * Tests the createPayment method of the PaymentsEndpoint class. The method should return a 400
+   * status code.
    */
   @Test
   public void testCreatePaymentBadRequest() {
@@ -65,8 +64,8 @@ public class TestPaymentEndpoint {
   }
 
   /**
-   * Tests if the payment with the id 17503 is returned.
-   * The method should return a 200 status code.
+   * Tests if the payment with the id 17503 is returned. The method should return a 200 status
+   * code.
    */
   @Test
   public void testGetPaymentByIdOk() {
@@ -80,8 +79,7 @@ public class TestPaymentEndpoint {
   }
 
   /**
-   * Tests if the payment with the id 666 is returned.
-   * The method should return a 404 status code.
+   * Tests if the payment with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetPaymentByIdNotFound() {
@@ -93,8 +91,7 @@ public class TestPaymentEndpoint {
   }
 
   /**
-   * Tests if the created payment can be deleted.
-   * The method should return a 204 status code.
+   * Tests if the created payment can be deleted. The method should return a 204 status code.
    */
   @Test
   public void testDeletePaymentsById() {

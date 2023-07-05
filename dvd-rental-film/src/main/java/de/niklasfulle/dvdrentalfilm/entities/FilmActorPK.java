@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalfilm.entity;
+package de.niklasfulle.dvdrentalfilm.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -21,6 +21,11 @@ public class FilmActorPK implements Serializable {
   private Integer filmId;
 
   public FilmActorPK() {
+  }
+
+  public FilmActorPK(Integer actorId, Integer filmId) {
+    this.actorId = actorId;
+    this.filmId = filmId;
   }
 
   // Getter and Setter

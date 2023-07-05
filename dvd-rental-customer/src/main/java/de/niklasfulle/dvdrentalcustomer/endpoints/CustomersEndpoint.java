@@ -38,8 +38,10 @@ public class CustomersEndpoint {
   // Endpoints
 
   /**
-   * Creates a customer. The customer is stored in the database. The customer is created with the
-   * given address. The address must exist. The address is passed as a query parameter.
+   * Creates a customer. The customer is stored in the database. The customer is
+   * created with the
+   * given address. The address must exist. The address is passed as a query
+   * parameter.
    *
    * @param addressId      The address id.
    * @param storeId        The store id.
@@ -99,11 +101,12 @@ public class CustomersEndpoint {
   }
 
   /**
-   * Get all customer. The customer are returned as a JSON array. The limit and offset can be used
-   * to limit the number of customer returned.
+   * Get all customers. The customers are returned as a JSON array. The limit and
+   * offset can be used
+   * to limit the number of customers returned.
    *
-   * @param limit  The maximum number of customer to return.
-   * @param offset The number of customer to skip.
+   * @param limit  The maximum number of customers to return.
+   * @param offset The number of customers to skip.
    * @return A response with the status code and a message.
    */
   @GET

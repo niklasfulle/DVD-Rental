@@ -36,7 +36,8 @@ public class PaymentsEndpoint {
   // Endpoints
 
   /**
-   * Creates a new payment. The payment is stored in the database. The customer must exist.
+   * Creates a new payment. The payment is stored in the database. The customer
+   * must exist.
    *
    * @param paymentStream The payment data as a JSON object.
    * @return A response with the status code and a message.
@@ -64,19 +65,6 @@ public class PaymentsEndpoint {
   }
 
   /**
-   * Get a payment by its Id. The payment is returned as a JSON object.
-   *
-   * @param paymentId The Id of the payment.
-   * @return A response with the status code and a message.
-   */
-  @GET
-  @Path("/{id}")
-  @Produces(MediaType.APPLICATION_JSON)
-  public Response getPaymentById(@PathParam("id") int paymentId) {
-    return paymentService.getPaymentById(paymentId);
-  }
-
-  /**
    * Delete a payment by its Id. The payment is deleted from the database.
    *
    * @param paymentId The Id of the payment.
@@ -87,6 +75,19 @@ public class PaymentsEndpoint {
   @Produces(MediaType.TEXT_PLAIN)
   public Response deletePaymentsById(@PathParam("id") int paymentId) {
     return paymentService.deletePaymentsById(paymentId);
+  }
+
+  /**
+   * Get a payment by its Id. The payment is returned as a JSON object.
+   *
+   * @param paymentId The Id of the payment.
+   * @return A response with the status code and a message.
+   */
+  @GET
+  @Path("/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getPaymentById(@PathParam("id") int paymentId) {
+    return paymentService.getPaymentById(paymentId);
   }
 
   @GET

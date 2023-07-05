@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalfilm.entity;
+package de.niklasfulle.dvdrentalfilm.entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
@@ -48,6 +48,12 @@ public class Actor implements Serializable {
   private List<FilmActor> filmActors;
 
   public Actor() {
+  }
+
+  public Actor(String firstName, String lastName, Timestamp LastUpdate) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.lastUpdate = LastUpdate;
   }
 
   // Getter and Setter

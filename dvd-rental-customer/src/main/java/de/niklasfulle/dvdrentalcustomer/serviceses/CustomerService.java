@@ -7,6 +7,10 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.ws.rs.ProcessingException;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -22,8 +26,11 @@ import java.util.List;
 @Stateless
 public class CustomerService {
 
+  // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
+
+  // Methods
 
   /**
    * Creates a new Customer object and persists it to the database. Checks if the storeId is valid.
@@ -36,9 +43,7 @@ public class CustomerService {
   public Response createCustomer(JsonObject jsonCustomerObject, Address address, int storeId)
       throws ParseException {
 
-    // TODO works with the store services
-    
-    /*if (storeId > 0) {
+    if (storeId > 0) {
       try {
         Client client = ClientBuilder.newClient();
 
@@ -58,7 +63,7 @@ public class CustomerService {
             .entity("SERVICE_UNAVAILABLE")
             .build();
       }
-    }*/
+    }
 
     Date createDate;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

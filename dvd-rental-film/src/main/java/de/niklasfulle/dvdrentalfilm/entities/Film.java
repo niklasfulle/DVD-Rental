@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalfilm.entity;
+package de.niklasfulle.dvdrentalfilm.entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.CascadeType;
@@ -26,9 +26,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Film.getAll", query = "SELECT f FROM Film f"),
-    @NamedQuery(name = "Film.getLastFilm", query = "SELECT r FROM Film r ORDER BY filmId DESC"),
-    @NamedQuery(name = "Film.getAllFetch", query = "SELECT f FROM Film f JOIN FETCH f.filmActors a"),
-    @NamedQuery(name = "Film.getFilmByIdFetch", query = "select f from Film f JOIN FETCH f.filmActors a where f.filmId = ?1")
+    @NamedQuery(name = "Film.getLastFilm", query = "SELECT f FROM Film f ORDER BY filmId DESC"),
 })
 public class Film implements Serializable {
 
@@ -76,6 +74,21 @@ public class Film implements Serializable {
   private List<FilmCategory> filmCategories;
 
   public Film() {
+  }
+
+  public Film(String description, Language language, Short length, String rating,
+      Short releaseYear, Short rentalDuration, BigDecimal rentalRate, BigDecimal replacementCost,
+      String title, Timestamp lastUpdate) {
+    this.description = description;
+    this.length = length;
+    this.rating = rating;
+    this.releaseYear = releaseYear;
+    this.rentalDuration = rentalDuration;
+    this.rentalRate = rentalRate;
+    this.replacementCost = replacementCost;
+    this.title = title;
+    this.language = language;
+    this.lastUpdate = lastUpdate;
   }
 
   // Getter and Setter

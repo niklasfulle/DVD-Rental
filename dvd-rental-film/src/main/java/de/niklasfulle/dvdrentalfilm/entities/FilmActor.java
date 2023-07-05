@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalfilm.entity;
+package de.niklasfulle.dvdrentalfilm.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -7,45 +7,48 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
-import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * The Entity FilmCategory represents the filmcategory table in the database. FilmCategory is
- * responsible for the processing of the data of the FilmCategory objects in the database.
+ * The Entity FilmActor represents the filmactor table in the database. FilmActor is responsible for
+ * the processing of the data of the FilmActor objects in the database.
  */
 @Entity
-@NamedQuery(name = "FilmCategory.getFilmCategory", query = "SELECT fc from FilmCategory fc where film = ?1 and category = ?2")
-@Table(name = "film_category")
-public class FilmCategory implements Serializable {
+@NamedQuery(name = "FilmActor.getFilmActor", query = "SELECT fc from FilmActor fc where film = ?1 and actor = ?2")
+@Table(name = "film_actor")
+public class FilmActor implements Serializable {
 
-  @Serial
   private static final long serialVersionUID = 1L;
 
   @EmbeddedId
-  private FilmCategoryPK id;
+  private FilmActorPK id;
 
   @Column(name = "last_update")
   private Timestamp lastUpdate;
 
   @ManyToOne
-  @JoinColumn(name = "category_id", insertable = false, updatable = false)
-  private Category category;
+  @JoinColumn(name = "actor_id", insertable = false, updatable = false)
+  private Actor actor;
 
   @ManyToOne
   @JoinColumn(name = "film_id", insertable = false, updatable = false)
   private Film film;
 
-  public FilmCategory() {
+  public FilmActor() {
+  }
+
+  public FilmActor(FilmActorPK id, Timestamp lastUpdate) {
+    this.id = id;
+    this.lastUpdate = lastUpdate;
   }
 
   // Getter and Setter
-  public FilmCategoryPK getId() {
+  public FilmActorPK getId() {
     return this.id;
   }
 
-  public void setId(FilmCategoryPK id) {
+  public void setId(FilmActorPK id) {
     this.id = id;
   }
 
@@ -57,12 +60,12 @@ public class FilmCategory implements Serializable {
     this.lastUpdate = lastUpdate;
   }
 
-  public Category getCategory() {
-    return this.category;
+  public Actor getActor() {
+    return this.actor;
   }
 
-  public void setCategory(Category category) {
-    this.category = category;
+  public void setActor(Actor actor) {
+    this.actor = actor;
   }
 
   public Film getFilm() {

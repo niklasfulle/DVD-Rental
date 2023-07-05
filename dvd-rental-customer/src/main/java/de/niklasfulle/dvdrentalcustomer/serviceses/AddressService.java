@@ -17,8 +17,11 @@ import java.time.Instant;
 @Stateless
 public class AddressService {
 
+  // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
+
+  // Methods
 
   /**
    * Creates a new Address object and persists it to the database.

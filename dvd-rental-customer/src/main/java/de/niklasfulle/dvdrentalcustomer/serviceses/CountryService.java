@@ -18,8 +18,11 @@ import java.util.List;
 @Stateless
 public class CountryService {
 
+  // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
+
+  // Methods
 
   /**
    * Creates a new Country object and persists it to the database.
