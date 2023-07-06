@@ -65,8 +65,7 @@ public class CountriesEndpoint {
   }
 
   /**
-   * Get all countries. The countries are returned as a JSON array. The limit and
-   * offset can be used
+   * Get all countries. The countries are returned as a JSON array. The limit and offset can be used
    * to limit the number of countries returned.
    *
    * @param limit  The maximum number of countries to return.

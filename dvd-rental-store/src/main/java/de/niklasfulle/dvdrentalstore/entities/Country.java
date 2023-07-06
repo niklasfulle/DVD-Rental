@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.OneToMany;
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,9 +15,14 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity Country represents the country table in the database. Country is responsible for the
+ * The Entity Country represents the country table in the database. Country is
+ * responsible for the
  * processing of the data of the Country objects in the database.
  */
+@NamedQueries({
+    @NamedQuery(name = "Country.getAll", query = "SELECT c FROM Country c"),
+    @NamedQuery(name = "Country.getCountryByName", query = "SELECT c from Country c WHERE country = ?1")
+})
 @Entity
 public class Country implements Serializable {
 

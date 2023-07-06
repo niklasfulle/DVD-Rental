@@ -23,7 +23,7 @@ public class StoreEndpoint {
 
   /**
    * Gets the store with the given id.
-   * 
+   *
    * @param storeId The id of the store.
    * @return A response with the status code and a message.
    */

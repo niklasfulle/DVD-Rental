@@ -7,7 +7,7 @@
     <persistence-unit name="ExampleDS" transaction-type="JTA">
         <jta-data-source>java:jboss/datasources/dvdrentalstore</jta-data-source>
         <properties>
-            <property name="hibernate.show_sql" value="true"/>
+            <!--<property name="hibernate.show_sql" value="true"/>-->
             <property name="hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS" value="1"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.order_inserts" value="true"/>

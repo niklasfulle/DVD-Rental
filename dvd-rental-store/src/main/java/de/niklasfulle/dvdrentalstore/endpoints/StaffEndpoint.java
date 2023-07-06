@@ -23,7 +23,7 @@ public class StaffEndpoint {
 
   /**
    * Gets the staff with the given id.
-   * 
+   *
    * @param staffId The id of the staff.
    * @return A response with the status code and a message.
    */

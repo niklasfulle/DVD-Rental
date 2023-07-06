@@ -8,16 +8,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.NamedQueries;
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity City represents the city table in the database. City is responsible for the processing
+ * The Entity City represents the city table in the database. City is
+ * responsible for the processing
  * of the data of the City objects in the database.
  */
+@NamedQueries({
+    @NamedQuery(name = "City.getAll", query = "SELECT c FROM City c"),
+    @NamedQuery(name = "City.getCityByName", query = "SELECT c from City c WHERE city = ?1")
+})
 @Entity
 public class City implements Serializable {
 

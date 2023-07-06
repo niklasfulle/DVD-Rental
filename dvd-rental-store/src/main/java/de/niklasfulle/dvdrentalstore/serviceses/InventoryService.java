@@ -24,7 +24,7 @@ public class InventoryService {
 
   /**
    * Gets an Inventory object from the database.
-   * 
+   *
    * @param inventoryId Inventory id
    * @return
    */
@@ -51,7 +51,7 @@ public class InventoryService {
 
   /**
    * Returns a list of all Inventorys with the given film id.
-   * 
+   *
    * @param filmId Film id
    * @return Response with status code and message
    */

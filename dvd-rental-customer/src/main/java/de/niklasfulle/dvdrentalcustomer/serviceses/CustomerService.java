@@ -70,7 +70,6 @@ public class CustomerService {
     try {
       java.util.Date parsedDate = format.parse(jsonCustomerObject.getString("createDate"));
       createDate = new Date(parsedDate.getTime());
-      System.out.println("Converted SQL date: " + createDate);
     } catch (ParseException e) {
       return Response.status(Response.Status.BAD_REQUEST)
           .entity("only allowed: Dateformat as 'YYYY-MM-DD'")

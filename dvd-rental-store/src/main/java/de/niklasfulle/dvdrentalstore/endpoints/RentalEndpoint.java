@@ -1,6 +1,5 @@
 package de.niklasfulle.dvdrentalstore.endpoints;
 
-import java.io.InputStream;
 import de.niklasfulle.dvdrentalstore.serviceses.InventoryService;
 import de.niklasfulle.dvdrentalstore.serviceses.JsonBuilderService;
 import de.niklasfulle.dvdrentalstore.serviceses.RentalService;
@@ -16,6 +15,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.io.InputStream;
 
 /**
  * Endpoint for rentals. The rentals are stored in the database.
@@ -39,7 +39,8 @@ public class RentalEndpoint {
   // Endpoints
 
   /**
-   * Create a new rental. The address data is rental as a JSON object in the request body. 
+   * Create a new rental. The address data is rental as a JSON object in the
+   * request body.
    *
    * @param rentalStream The rental data as a JSON object.
    * @return A response with the status code and a message.
@@ -60,7 +61,7 @@ public class RentalEndpoint {
 
   /**
    * Gets the rental with the given id.
-   * 
+   *
    * @param rentalId The id of the rental.
    * @return A response with the status code and a message.
    */
@@ -72,8 +73,8 @@ public class RentalEndpoint {
   }
 
   /**
-   * Returns the rental with the given id. 
-   * 
+   * Returns the rental with the given id.
+   *
    * @param rentalId The id of the rental.
    * @return A response with the status code and a message.
    */

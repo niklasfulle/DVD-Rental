@@ -3,6 +3,7 @@ package de.niklasfulle.dvdrentalstore.serviceses;
 import de.niklasfulle.dvdrentalstore.entities.Inventory;
 import de.niklasfulle.dvdrentalstore.entities.Rental;
 import de.niklasfulle.dvdrentalstore.entities.Staff;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -13,7 +14,6 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
-
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -23,6 +23,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Service for Rental entity.
  */
+@Stateless
 public class RentalService {
 
   // The EntityManager is used to communicate with the database.
@@ -98,7 +99,8 @@ public class RentalService {
 
     try {
       Timestamp returnDate = null;
-      Rental rental = new Rental(customerId, Timestamp.valueOf(rentalDate), returnDate, inventory, staff,
+      Rental rental = new Rental(customerId, Timestamp.valueOf(rentalDate), returnDate, inventory,
+          staff,
           Timestamp.from(Instant.now()));
 
       em.persist(rental);
@@ -116,7 +118,7 @@ public class RentalService {
 
   /**
    * The method returns a Rental
-   * 
+   *
    * @param rentalId Rental id
    * @return Response with status code and message
    */
@@ -138,7 +140,7 @@ public class RentalService {
 
   /**
    * The method returns a Rental object as JsonObject.
-   * 
+   *
    * @param rentalId Rental id
    * @return Response with status code and message
    */
@@ -155,7 +157,7 @@ public class RentalService {
 
   /**
    * The method returns a Rental object by customer id and inventory id.
-   * 
+   *
    * @param customerId Customer id
    * @param inventory  Inventory id
    * @return Response with status code and message
@@ -170,7 +172,7 @@ public class RentalService {
 
   /**
    * Returns the last rental with no return date.
-   * 
+   *
    * @return Response with status code and message
    */
   public Response getLastRentalNoReturnDate() {

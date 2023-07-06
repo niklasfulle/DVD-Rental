@@ -22,7 +22,7 @@ public class StaffService {
 
   /**
    * Gets an Staff object from the database.
-   * 
+   *
    * @param staffId Staff id
    * @return Staff object
    */
@@ -32,7 +32,7 @@ public class StaffService {
 
   /**
    * Gets an Staff object from the database and returns it as a JSON object.
-   * 
+   *
    * @param staffId Staff id
    * @return Response with status code and message
    */

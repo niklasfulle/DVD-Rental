@@ -83,8 +83,7 @@ public class CityService {
   }
 
   /**
-   * Get all cities. The cities are returned as a JSON array. The limit and offset
-   * can be used to
+   * Get all cities. The cities are returned as a JSON array. The limit and offset can be used to
    * limit the number of cities returned.
    *
    * @param limit  The maximum number of cities to return.

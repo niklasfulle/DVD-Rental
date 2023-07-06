@@ -37,8 +37,7 @@ public class CitiesEndpoint {
   // Endpoints
 
   /**
-   * Creates a new city. The city is stored in the database. The country must
-   * exist.
+   * Creates a new city. The city is stored in the database. The country must exist.
    *
    * @param cityStream The city data as JSON.
    * @return A response with the status code and a message.
@@ -79,8 +78,7 @@ public class CitiesEndpoint {
   }
 
   /**
-   * Get all cities. The cities are returned as a JSON array. The limit and offset
-   * can be used to
+   * Get all cities. The cities are returned as a JSON array. The limit and offset can be used to
    * limit the number of cities returned.
    *
    * @param limit  The maximum number of cities to return.

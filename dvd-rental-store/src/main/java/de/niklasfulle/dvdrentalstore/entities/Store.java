@@ -16,7 +16,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity Store represents the store table in the database. Store is responsible for the
+ * The Entity Store represents the store table in the database. Store is
+ * responsible for the
  * processing of the data of the Store objects in the database.
  */
 @Entity
@@ -45,6 +46,9 @@ public class Store implements Serializable {
   @ManyToOne
   @JoinColumn(name = "manager_staff_id")
   private Staff staff;
+
+  public Store() {
+  }
 
   public Store(Staff staff, Address address, Timestamp lastUpdate) {
     this.staff = staff;

@@ -22,7 +22,6 @@ public class InventoryEndpoint {
   // Endpoints
 
   /**
-   * 
    * @param inventoryId The id of the inventory.
    * @return
    */
@@ -34,7 +33,6 @@ public class InventoryEndpoint {
   }
 
   /**
-   * 
    * @param filmId The id of the film.
    * @return
    */

@@ -37,8 +37,7 @@ public class AddressesEndpoint {
   // Endpoints
 
   /**
-   * Create a new address. The address data is passed as a JSON object in the
-   * request body. The city
+   * Create a new address. The address data is passed as a JSON object in the request body. The city
    * and Country must exist.
    *
    * @param addressStream The address data as a JSON object.
@@ -80,8 +79,7 @@ public class AddressesEndpoint {
   }
 
   /**
-   * Get all addresses. The addresses are returned as a JSON array. The limit and
-   * offset can be used
+   * Get all addresses. The addresses are returned as a JSON array. The limit and offset can be used
    * to limit the number of addresses returned.
    *
    * @param limit  The maximum number of addresses to return.

@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.Response;
  */
 @Stateless
 public class StoreService {
+
   // The EntityManager is used to communicate with the database.
   @PersistenceContext
   EntityManager em;
@@ -21,7 +22,7 @@ public class StoreService {
 
   /**
    * Gets an Store object from the database.
-   * 
+   *
    * @param storeId Store id
    * @return Response with status code and message
    */
@@ -39,13 +40,13 @@ public class StoreService {
 
   /**
    * Returns the number of stores in the database.
-   * 
+   *
    * @return Response with status code and message
    */
   public Response getStoreCount() {
     return Response.ok().entity(em.createNamedQuery("Store.getAll", Store.class)
-        .getResultList()
-        .size())
+            .getResultList()
+            .size())
         .build();
   }
 }

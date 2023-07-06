@@ -11,13 +11,20 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.io.Serial;
 import java.io.Serializable;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity Address represents the address table in the database. Address is responsible for the
+ * The Entity Address represents the address table in the database. Address is
+ * responsible for the
  * processing of the data of the Address objects in the database.
  */
+@NamedQueries({
+    @NamedQuery(name = "Address.getAll", query = "SELECT a FROM Address a"),
+    @NamedQuery(name = "Address.getLastAddressId", query = "SELECT a FROM Address a Order by addressId DESC")
+})
 @Entity
 public class Address implements Serializable {
 

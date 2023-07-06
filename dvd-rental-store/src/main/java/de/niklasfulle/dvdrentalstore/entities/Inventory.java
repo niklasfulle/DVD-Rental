@@ -16,8 +16,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity Inventory represents the inventory table in the database.
- * Inventory is responsible for
+ * The Entity Inventory represents the inventory table in the database. Inventory is responsible for
  * the processing of the data of the Inventory objects in the database.
  */
 @Entity

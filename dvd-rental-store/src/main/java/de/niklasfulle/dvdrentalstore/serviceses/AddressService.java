@@ -71,11 +71,11 @@ public class AddressService {
    * @return Response with status code and message
    */
   public Response getAddressById(int addressId) {
+
     Address address = em.find(Address.class, addressId);
     if (address == null) {
       return Response.status(Response.Status.NOT_FOUND).build();
     }
-
     return Response.ok().entity(jsonObjectAddressBuilder(address)).build();
   }
 
@@ -120,7 +120,6 @@ public class AddressService {
   public JsonObject jsonObjectAddressBuilder(Address address) {
     return Json.createObjectBuilder()
         .add("address", address.getAddress())
-        .add("address2", address.getAddress2())
         .add("city", address.getCity().getCity())
         .add("country", address.getCity().getCountry().getCountry())
         .add("district", address.getDistrict())
