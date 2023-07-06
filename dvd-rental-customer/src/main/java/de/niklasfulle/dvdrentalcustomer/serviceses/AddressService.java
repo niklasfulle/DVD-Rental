@@ -1,15 +1,16 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
-import de.niklasfulle.dvdrentalcustomer.entities.Address;
-import de.niklasfulle.dvdrentalcustomer.entities.City;
-import jakarta.ejb.Stateless;
 import jakarta.json.Json;
+import java.time.Instant;
+import java.sql.Timestamp;
+import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
+import jakarta.ws.rs.core.Response;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.core.Response;
-import java.sql.Timestamp;
-import java.time.Instant;
+
+import de.niklasfulle.dvdrentalcustomer.entities.City;
+import de.niklasfulle.dvdrentalcustomer.entities.Address;
 
 /**
  * Service for Address entity.
@@ -95,8 +96,7 @@ public class AddressService {
   }
 
   /**
-   * Get all addresses. The addresses are returned as a JSON array. The limit and
-   * offset can be used
+   * Get all addresses. The addresses are returned as a JSON array. The limit and offset can be used
    * to limit the number of addresses returned.
    *
    * @param limit  The maximum number of addresses to return.
@@ -105,9 +105,9 @@ public class AddressService {
    */
   public Response getAllAddressesLimit(int limit, int offset) {
     return Response.ok(em.createNamedQuery("Address.getAll", Address.class)
-        .setFirstResult(offset)
-        .setMaxResults(limit > 100 ? 100 : limit)
-        .getResultList())
+            .setFirstResult(offset)
+            .setMaxResults(limit > 100 ? 100 : limit)
+            .getResultList())
         .build();
   }
 

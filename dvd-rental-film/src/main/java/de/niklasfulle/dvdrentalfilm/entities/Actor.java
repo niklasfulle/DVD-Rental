@@ -1,19 +1,19 @@
 package de.niklasfulle.dvdrentalfilm.entities;
 
-import jakarta.json.bind.annotation.JsonbTransient;
+import java.io.Serial;
+import java.util.List;
+import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
-import java.io.Serial;
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * The Entity Actor represents the actor table in the database. Actor is responsible for the

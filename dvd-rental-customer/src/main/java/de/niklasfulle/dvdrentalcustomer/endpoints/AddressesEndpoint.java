@@ -1,22 +1,23 @@
 package de.niklasfulle.dvdrentalcustomer.endpoints;
 
-import de.niklasfulle.dvdrentalcustomer.entities.City;
-import de.niklasfulle.dvdrentalcustomer.serviceses.AddressService;
-import de.niklasfulle.dvdrentalcustomer.serviceses.CityService;
-import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
-import jakarta.inject.Inject;
-import jakarta.json.JsonObject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 import java.io.InputStream;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import jakarta.json.JsonObject;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.DefaultValue;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+
+import de.niklasfulle.dvdrentalcustomer.entities.City;
+import de.niklasfulle.dvdrentalcustomer.serviceses.CityService;
+import de.niklasfulle.dvdrentalcustomer.serviceses.AddressService;
+import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
 
 /**
  * Endpoint for addresses. The addresses are stored in the database.

@@ -1,16 +1,17 @@
 package de.niklasfulle.dvdrentalstore.serviceses;
 
-import de.niklasfulle.dvdrentalstore.entities.Country;
-import jakarta.ejb.Stateless;
+import java.util.List;
 import jakarta.json.Json;
+import java.time.Instant;
+import java.sql.Timestamp;
+import java.util.LinkedList;
+import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
+import jakarta.ws.rs.core.Response;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.core.Response;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.LinkedList;
-import java.util.List;
+
+import de.niklasfulle.dvdrentalstore.entities.Country;
 
 /**
  * Service for Country entity.
@@ -80,7 +81,8 @@ public class CountryService {
   }
 
   /**
-   * Get all countries. The countries are returned as a JSON array. The limit and offset can be used
+   * Get all countries. The countries are returned as a JSON array. The limit and
+   * offset can be used
    * to limit the number of countries returned.
    *
    * @param limit  The maximum number of countries to return.

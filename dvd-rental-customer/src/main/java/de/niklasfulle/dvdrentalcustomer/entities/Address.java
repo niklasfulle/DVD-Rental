@@ -1,20 +1,20 @@
 package de.niklasfulle.dvdrentalcustomer.entities;
 
-import jakarta.json.bind.annotation.JsonbTransient;
+import java.io.Serial;
+import java.util.List;
+import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
-import java.io.Serial;
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * The Entity Address represents the address table in the database. Address is responsible for the

@@ -1,13 +1,14 @@
 package de.niklasfulle.dvdrentalstore.endpoints;
 
-import de.niklasfulle.dvdrentalstore.serviceses.StoreService;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+
+import de.niklasfulle.dvdrentalstore.serviceses.StoreService;
 
 /**
  * Endpoint for stores. The stores are stored in the database.
@@ -45,5 +46,4 @@ public class StoreEndpoint {
   public Response getStoreCount() {
     return storeService.getStoreCount();
   }
-
 }

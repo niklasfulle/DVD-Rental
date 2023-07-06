@@ -1,9 +1,9 @@
 package dvdrentalstoretest;
 
+import org.junit.jupiter.api.Test;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.junit.jupiter.api.Test;
 
 /**
  * This class is used to test the StoreEndpoint class.
@@ -14,7 +14,7 @@ public class TestStoreEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-store/resources/stores";
 
   /**
-   * 
+   * Tests if the count of stores is greater than 0. The method should return a 200 status code.
    */
   @Test
   public void testGetStoresCountOK() {
@@ -28,7 +28,7 @@ public class TestStoreEndpoint {
   }
 
   /**
-   * 
+   * Tests if the store with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetStoreByIdOK() {
@@ -42,7 +42,7 @@ public class TestStoreEndpoint {
   }
 
   /**
-   * 
+   * Tests if the store with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetStoreByIdNotFound() {
@@ -52,5 +52,4 @@ public class TestStoreEndpoint {
     resteasyClient.close();
     assert (response == 404);
   }
-
 }

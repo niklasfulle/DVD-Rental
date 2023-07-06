@@ -1,9 +1,9 @@
 package dvdrentalstoretest;
 
+import org.junit.jupiter.api.Test;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.junit.jupiter.api.Test;
 
 public class TestInventoryEndpoint {
 
@@ -11,7 +11,7 @@ public class TestInventoryEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-store/resources/inventories";
 
   /**
-   * 
+   * Tests if the inventory with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetInventorieByIdOK() {
@@ -25,7 +25,7 @@ public class TestInventoryEndpoint {
   }
 
   /**
-   * 
+   * Tests if the inventory with the id 5000 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetInventorieByIdNotFound() {
@@ -37,7 +37,7 @@ public class TestInventoryEndpoint {
   }
 
   /**
-   * 
+   * Tests if the inventories with the film id 1 are returned. The method should return a 200 status
    */
   @Test
   public void testGetInventorieListByFilmIdOK() {
@@ -51,7 +51,7 @@ public class TestInventoryEndpoint {
   }
 
   /**
-   * 
+   * Tests if the inventories with the film id 10000 are returned. The method should return a 404 status
    */
   @Test
   public void testGetInventorieListByFilmIdNotFound() {
@@ -61,5 +61,4 @@ public class TestInventoryEndpoint {
     resteasyClient.close();
     assert (response == 404);
   }
-
 }

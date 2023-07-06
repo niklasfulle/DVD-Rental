@@ -1,16 +1,17 @@
 package de.niklasfulle.dvdrentalcustomer.serviceses;
 
-import de.niklasfulle.dvdrentalcustomer.entities.Country;
-import jakarta.ejb.Stateless;
+import java.util.List;
 import jakarta.json.Json;
+import java.time.Instant;
+import java.sql.Timestamp;
+import java.util.LinkedList;
+import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
+import jakarta.ws.rs.core.Response;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.core.Response;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.LinkedList;
-import java.util.List;
+
+import de.niklasfulle.dvdrentalcustomer.entities.Country;
 
 /**
  * Service for Country entity.

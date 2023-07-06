@@ -1,15 +1,14 @@
 package dvdrentalstoretest;
 
+import org.junit.jupiter.api.Test;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.client.ClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.junit.jupiter.api.Test;
-
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.Entity;
-import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Response;
 
 /**
  * This class is used to test the RentalEndpoint class.
@@ -20,7 +19,8 @@ public class TestRentalEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-store/resources/rentals";
 
   /**
-   * 
+   * Tests the createRental method of the RentalEndpoint class. The method should return a 201
+   * status code.
    */
   @Test
   public void testCreateRentalCreated() {
@@ -33,7 +33,8 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests the createRental method of the RentalEndpoint class. The method should return a 404
+   * status code.
    */
   @Test
   public void testCreateRentalNotFound() {
@@ -46,7 +47,8 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests the createRental method of the RentalEndpoint class. The method should return a 400
+   * status code.
    */
   @Test
   public void testCreateRentalBadRequest() {
@@ -59,7 +61,7 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests if the rental with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetRantalByIdOk() {
@@ -73,7 +75,7 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests if the rental with the id 17000 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetRentalByIdNotFound() {
@@ -85,7 +87,7 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests if the rental with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testReturnRentalOk() {
@@ -106,7 +108,7 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests if the rental with the id 666666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testReturnRentalNotFound() {
@@ -118,7 +120,7 @@ public class TestRentalEndpoint {
   }
 
   /**
-   * 
+   * Tests if the rental with the id 1 is already returned. The method should return a 422 status
    */
   @Test
   public void testReturnRentalAlreadyTerminated() {
@@ -128,5 +130,4 @@ public class TestRentalEndpoint {
     client.close();
     assert (response.getStatus() == 422);
   }
-
 }

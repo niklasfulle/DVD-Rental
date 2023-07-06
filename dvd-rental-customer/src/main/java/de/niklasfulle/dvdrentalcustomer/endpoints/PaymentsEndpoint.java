@@ -1,21 +1,22 @@
 package de.niklasfulle.dvdrentalcustomer.endpoints;
 
-import de.niklasfulle.dvdrentalcustomer.entities.Customer;
-import de.niklasfulle.dvdrentalcustomer.serviceses.CustomerService;
-import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
-import de.niklasfulle.dvdrentalcustomer.serviceses.PaymentService;
-import jakarta.inject.Inject;
-import jakarta.json.JsonObject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 import java.io.InputStream;
+import jakarta.ws.rs.DELETE;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import jakarta.json.JsonObject;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+
+import de.niklasfulle.dvdrentalcustomer.entities.Customer;
+import de.niklasfulle.dvdrentalcustomer.serviceses.PaymentService;
+import de.niklasfulle.dvdrentalcustomer.serviceses.CustomerService;
+import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
 
 /**
  * Endpoint for payments. The payments are stored in the database.
@@ -36,8 +37,7 @@ public class PaymentsEndpoint {
   // Endpoints
 
   /**
-   * Creates a new payment. The payment is stored in the database. The customer
-   * must exist.
+   * Creates a new payment. The payment is stored in the database. The customer must exist.
    *
    * @param paymentStream The payment data as a JSON object.
    * @return A response with the status code and a message.

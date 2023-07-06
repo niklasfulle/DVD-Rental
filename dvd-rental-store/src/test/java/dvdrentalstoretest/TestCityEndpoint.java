@@ -1,14 +1,14 @@
 package dvdrentalstoretest;
 
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.Entity;
-import jakarta.ws.rs.client.WebTarget;
+import org.junit.jupiter.api.Test;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.client.ClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.junit.jupiter.api.Test;
 
 /**
  * This class is used to test the CityEndpoint class.
@@ -19,8 +19,7 @@ public class TestCityEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-store/resources/cities";
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class. The method should
-   * return a 201 status
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 201 status
    * code.
    */
   @Test
@@ -35,8 +34,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class. The method should
-   * return a 404 status
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 404 status
    * code.
    */
   @Test
@@ -51,8 +49,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests the createCity method of the CitiesEndpoint class. The method should
-   * return a 400 status
+   * Tests the createCity method of the CitiesEndpoint class. The method should return a 400 status
    * code.
    */
   @Test
@@ -67,8 +64,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests if the city with the id 1 is returned. The method should return a 200
-   * status code.
+   * Tests if the city with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetCityByIdOk() {
@@ -82,8 +78,7 @@ public class TestCityEndpoint {
   }
 
   /**
-   * Tests if the city with the id 666 is returned. The method should return a 404
-   * status code.
+   * Tests if the city with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetCityByIdNotFound() {

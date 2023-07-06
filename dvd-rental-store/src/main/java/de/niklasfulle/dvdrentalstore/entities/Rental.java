@@ -1,17 +1,17 @@
 package de.niklasfulle.dvdrentalstore.entities;
 
+import java.io.Serial;
+import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import java.io.Serial;
-import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * The Entity Rental represents the rental table in the database. Rental is responsible for the

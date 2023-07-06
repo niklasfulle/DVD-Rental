@@ -1,11 +1,11 @@
 package de.niklasfulle.dvdrentalstore.serviceses;
 
-import jakarta.ejb.Stateless;
 import jakarta.json.Json;
-import jakarta.json.JsonException;
+import java.io.InputStream;
+import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
-import java.io.InputStream;
+import jakarta.json.JsonException;
 
 /**
  * Service for building JSON objects.

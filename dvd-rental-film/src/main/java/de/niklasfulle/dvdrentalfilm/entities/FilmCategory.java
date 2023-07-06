@@ -1,15 +1,15 @@
 package de.niklasfulle.dvdrentalfilm.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
 import java.io.Serial;
-import java.io.Serializable;
 import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQuery;
 
 /**
  * The Entity FilmCategory represents the filmcategory table in the database. FilmCategory is

@@ -1,9 +1,9 @@
 package de.niklasfulle.dvdrentalfilm.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import java.io.Serial;
 import java.io.Serializable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 /**
  * The Entity FilmCategoryPK represents the primary key of the filmcategory table in the database.

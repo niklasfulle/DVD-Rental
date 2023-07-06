@@ -1,24 +1,25 @@
 package de.niklasfulle.dvdrentalstore.serviceses;
 
-import de.niklasfulle.dvdrentalstore.entities.Inventory;
-import de.niklasfulle.dvdrentalstore.entities.Rental;
-import de.niklasfulle.dvdrentalstore.entities.Staff;
+import jakarta.json.Json;
+import java.time.Instant;
+import java.sql.Timestamp;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import jakarta.json.Json;
 import jakarta.json.JsonObject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.ProcessingException;
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Response;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.ProcessingException;
+import jakarta.persistence.EntityManager;
+import jakarta.ws.rs.client.ClientBuilder;
 import java.time.format.DateTimeFormatter;
+import jakarta.persistence.PersistenceContext;
 import java.time.format.DateTimeParseException;
+
+import de.niklasfulle.dvdrentalstore.entities.Staff;
+import de.niklasfulle.dvdrentalstore.entities.Rental;
+import de.niklasfulle.dvdrentalstore.entities.Inventory;
 
 /**
  * Service for Rental entity.
@@ -177,9 +178,9 @@ public class RentalService {
    */
   public Response getLastRentalNoReturnDate() {
     return Response.ok().entity(em.createNamedQuery("Rental.getLastRental", Rental.class)
-        .setMaxResults(1)
-        .getSingleResult()
-        .getRentalId())
+            .setMaxResults(1)
+            .getSingleResult()
+            .getRentalId())
         .build();
   }
 
@@ -191,11 +192,11 @@ public class RentalService {
    */
   public JsonObject jsonObjectRentalBuilder(Rental rental) {
     return Json.createObjectBuilder().add(
-        "customer",
-        Json.createObjectBuilder()
-            .add("href", "/dvd-rental-customer/resources/customers/" +
-                rental.getCustomerId())
-            .build())
+            "customer",
+            Json.createObjectBuilder()
+                .add("href", "/dvd-rental-customer/resources/customers/" +
+                    rental.getCustomerId())
+                .build())
         .add("film",
             Json.createObjectBuilder()
                 .add("href", "/dvd-rental-film/resources/films/" +

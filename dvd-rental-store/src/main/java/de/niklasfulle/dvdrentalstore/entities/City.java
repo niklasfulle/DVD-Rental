@@ -1,24 +1,22 @@
 package de.niklasfulle.dvdrentalstore.entities;
 
-import jakarta.json.bind.annotation.JsonbTransient;
+import java.io.Serial;
+import java.util.List;
+import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.NamedQueries;
-import java.io.Serial;
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
-
+import jakarta.json.bind.annotation.JsonbTransient;
 /**
- * The Entity City represents the city table in the database. City is
- * responsible for the processing
+ * The Entity City represents the city table in the database. City is responsible for the processing
  * of the data of the City objects in the database.
  */
 @NamedQueries({

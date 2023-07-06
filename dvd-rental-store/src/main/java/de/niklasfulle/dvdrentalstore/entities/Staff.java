@@ -1,18 +1,18 @@
 package de.niklasfulle.dvdrentalstore.entities;
 
-import jakarta.json.bind.annotation.JsonbTransient;
+import java.io.Serial;
+import java.util.List;
+import java.sql.Timestamp;
+import java.io.Serializable;
+import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import java.io.Serial;
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * The Entity Staff represents the staff table in the database. Staff is responsible for the

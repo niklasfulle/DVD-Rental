@@ -1,9 +1,9 @@
 package dvdrentalstoretest;
 
+import org.junit.jupiter.api.Test;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.junit.jupiter.api.Test;
 
 /**
  * This class is used to test the StaffEndpoint class.
@@ -14,7 +14,7 @@ public class TestStaffEndpoint {
   private static final String PATH = "http://localhost:8080/dvd-rental-store/resources/staff";
 
   /**
-   * 
+   * Tests if the staff with the id 1 is returned. The method should return a 200 status code.
    */
   @Test
   public void testGetStaffByIdOK() {
@@ -28,7 +28,7 @@ public class TestStaffEndpoint {
   }
 
   /**
-   * 
+   * Tests if the staff with the id 666 is returned. The method should return a 404 status code.
    */
   @Test
   public void testGetStaffByIdNotFound() {

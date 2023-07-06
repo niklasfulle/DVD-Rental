@@ -1,23 +1,24 @@
 package de.niklasfulle.dvdrentalcustomer.endpoints;
 
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import java.io.InputStream;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import jakarta.json.JsonObject;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
+import java.text.ParseException;
+import jakarta.ws.rs.DefaultValue;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+
 import de.niklasfulle.dvdrentalcustomer.entities.Address;
 import de.niklasfulle.dvdrentalcustomer.serviceses.AddressService;
 import de.niklasfulle.dvdrentalcustomer.serviceses.CustomerService;
 import de.niklasfulle.dvdrentalcustomer.serviceses.JsonBuilderService;
-import jakarta.inject.Inject;
-import jakarta.json.JsonObject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DefaultValue;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import java.io.InputStream;
-import java.text.ParseException;
 
 /**
  * Endpoint for customers. The customers are stored in the database.
@@ -38,10 +39,8 @@ public class CustomersEndpoint {
   // Endpoints
 
   /**
-   * Creates a customer. The customer is stored in the database. The customer is
-   * created with the
-   * given address. The address must exist. The address is passed as a query
-   * parameter.
+   * Creates a customer. The customer is stored in the database. The customer is created with the
+   * given address. The address must exist. The address is passed as a query parameter.
    *
    * @param addressId      The address id.
    * @param storeId        The store id.
@@ -101,8 +100,7 @@ public class CustomersEndpoint {
   }
 
   /**
-   * Get all customers. The customers are returned as a JSON array. The limit and
-   * offset can be used
+   * Get all customers. The customers are returned as a JSON array. The limit and offset can be used
    * to limit the number of customers returned.
    *
    * @param limit  The maximum number of customers to return.

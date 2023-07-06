@@ -1,13 +1,14 @@
 package de.niklasfulle.dvdrentalstore.endpoints;
 
-import de.niklasfulle.dvdrentalstore.serviceses.InventoryService;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+
+import de.niklasfulle.dvdrentalstore.serviceses.InventoryService;
 
 /**
  * Endpoint for inventories. The inventories are stored in the database.
@@ -42,5 +43,4 @@ public class InventoryEndpoint {
   public Response getInventoryListByFilmId(@PathParam("filmId") int filmId) {
     return inventoryService.getInventoryListByFilmId(filmId);
   }
-
 }

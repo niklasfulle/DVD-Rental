@@ -1,12 +1,13 @@
 package de.niklasfulle.dvdrentalstore.serviceses;
 
-import de.niklasfulle.dvdrentalstore.entities.Store;
-import jakarta.ejb.Stateless;
 import jakarta.json.Json;
+import jakarta.ejb.Stateless;
 import jakarta.json.JsonObject;
+import jakarta.ws.rs.core.Response;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.core.Response;
+
+import de.niklasfulle.dvdrentalstore.entities.Store;
 
 /**
  * Service for Store entity.
