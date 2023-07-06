@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalstore.entity;
+package de.niklasfulle.dvdrentalstore.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

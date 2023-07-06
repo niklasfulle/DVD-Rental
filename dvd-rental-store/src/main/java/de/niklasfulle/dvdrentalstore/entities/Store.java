@@ -1,4 +1,4 @@
-package de.niklasfulle.dvdrentalstore.entity;
+package de.niklasfulle.dvdrentalstore.entities;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
