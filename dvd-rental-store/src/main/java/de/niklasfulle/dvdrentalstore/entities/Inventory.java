@@ -16,11 +16,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The Entity Inventory represents the inventory table in the database. Inventory is responsible for
+ * The Entity Inventory represents the inventory table in the database.
+ * Inventory is responsible for
  * the processing of the data of the Inventory objects in the database.
  */
 @Entity
-@NamedQuery(name = "Inventory.getAllByFilmId", query = "SELECT i from Inventory i WHERE film_id = ?1")
+@NamedQuery(name = "Inventory.getAllByFilmId", query = "SELECT i from Inventory i WHERE filmId = ?1")
 public class Inventory implements Serializable {
 
   @Serial
