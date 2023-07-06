@@ -39,6 +39,11 @@ public class Country implements Serializable {
   public Country() {
   }
 
+  public Country(String country, Timestamp lastUpdate) {
+    this.country = country;
+    this.lastUpdate = lastUpdate;
+  }
+
   // Getter and Setter
   public Integer getCountryId() {
     return this.countryId;

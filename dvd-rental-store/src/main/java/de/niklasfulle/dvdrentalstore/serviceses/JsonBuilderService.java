@@ -14,8 +14,7 @@ import java.io.InputStream;
 public class JsonBuilderService {
 
   /**
-   * Creates a JsonObject from an InputStream. Returns null if the JsonObject is
-   * empty.
+   * Creates a JsonObject from an InputStream. Returns null if the JsonObject is empty.
    *
    * @param stream InputStream containing the JSON data
    * @return JsonObject or null if empty

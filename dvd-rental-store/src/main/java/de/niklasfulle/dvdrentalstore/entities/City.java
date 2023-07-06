@@ -45,6 +45,12 @@ public class City implements Serializable {
   public City() {
   }
 
+  public City(String city, Country country, Timestamp lastUpdate) {
+    this.city = city;
+    this.country = country;
+    this.lastUpdate = lastUpdate;
+  }
+
   // Getter and Setter
   public Integer getCityId() {
     return this.cityId;

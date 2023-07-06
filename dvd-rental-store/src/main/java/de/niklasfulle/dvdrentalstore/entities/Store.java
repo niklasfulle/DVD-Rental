@@ -46,7 +46,10 @@ public class Store implements Serializable {
   @JoinColumn(name = "manager_staff_id")
   private Staff staff;
 
-  public Store() {
+  public Store(Staff staff, Address address, Timestamp lastUpdate) {
+    this.staff = staff;
+    this.address = address;
+    this.lastUpdate = lastUpdate;
   }
 
   // Getter and Setter

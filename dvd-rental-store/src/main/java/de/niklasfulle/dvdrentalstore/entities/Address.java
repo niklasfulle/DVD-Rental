@@ -59,6 +59,17 @@ public class Address implements Serializable {
   public Address() {
   }
 
+  public Address(String Address, String Address2, String District, City City, String Phone,
+      String PostalCode, Timestamp LastUpdate) {
+    this.address = Address;
+    this.address2 = Address2;
+    this.district = District;
+    this.city = City;
+    this.phone = Phone;
+    this.postalCode = PostalCode;
+    this.lastUpdate = LastUpdate;
+  }
+
   // Getter and Setter
   public Integer getAddressId() {
     return this.addressId;

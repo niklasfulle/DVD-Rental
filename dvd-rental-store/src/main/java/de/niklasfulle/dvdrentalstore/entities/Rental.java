@@ -55,6 +55,17 @@ public class Rental implements Serializable {
   public Rental() {
   }
 
+  public Rental(Integer customerId, Timestamp rentalDate, Timestamp returnDate, Inventory inventory,
+      Staff staff,
+      Timestamp lastUpdate) {
+    this.customerId = customerId;
+    this.rentalDate = rentalDate;
+    this.returnDate = returnDate;
+    this.inventory = inventory;
+    this.staff = staff;
+    this.lastUpdate = lastUpdate;
+  }
+
   // Getter and Setter
   public Integer getRentalId() {
     return this.rentalId;

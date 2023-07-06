@@ -48,6 +48,12 @@ public class Inventory implements Serializable {
   public Inventory() {
   }
 
+  public Inventory(Integer filmId, Store store, Timestamp lastUpdate) {
+    this.filmId = filmId;
+    this.store = store;
+    this.lastUpdate = lastUpdate;
+  }
+
   // Getter and Setter
   public Integer getInventoryId() {
     return this.inventoryId;

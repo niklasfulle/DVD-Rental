@@ -1,7 +1,7 @@
-package de.niklasfulle.dvdrentalcustomer.serviceses;
+package de.niklasfulle.dvdrentalstore.serviceses;
 
-import de.niklasfulle.dvdrentalcustomer.entities.City;
-import de.niklasfulle.dvdrentalcustomer.entities.Country;
+import de.niklasfulle.dvdrentalstore.entities.City;
+import de.niklasfulle.dvdrentalstore.entities.Country;
 import jakarta.ejb.Stateless;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
